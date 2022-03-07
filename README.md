@@ -26,9 +26,11 @@ I would also hope to build this out even furtther, once it's deveolped more with
 ##User Stories
 - As a user, I should be able to start the game from the home screen
 - As a user, I should be able to select what mode (colors, leters, numbers) I want to play from the main menu
-- As a user, I should be able to choose waht stage I want to play (watch, interact, quiz)
+- As a user, I should be able to choose what stage I want to play (watch, interact, quiz)
 - As a user, I should be able to play through one of the modes and a have a clear and concise way to go back to the main screen or choose another game
 - As a user, I should be able to review data regarding user's learning progess from the games
+
+
 
 
 
