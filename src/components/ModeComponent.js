@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, Image, TouchableOpacity } from 'react-native';
 
 
-
 const ModeComponent = ({navigation, link, imageSource, title}) => {
+    console.log(navigation)
 
   return (
       <TouchableOpacity onPress={()=> navigation.navigate({link})} >

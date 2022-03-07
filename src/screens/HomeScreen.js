@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 
 const HomeScreen = ({navigation}) => {
-console.log(navigation)
 
   return (
     <View style={styles.container}>

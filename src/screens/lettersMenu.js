@@ -9,21 +9,23 @@ const LettersMenu = ({ navigation }) => {
   return (
     <View>
       <ModeComponent
+        navigation={navigation}
         link="listen"
         title="Listen"
         imageSource={require("../../assets/images/lettersButton.png")}
       />
-      <ModeComponent 
-      link="touch"
-      title="Play"
-      imageSource={require("../../assets/images/lettersButton.png")}
+      <ModeComponent
+        navigation={navigation}
+        link="touch"
+        title="Play"
+        imageSource={require("../../assets/images/lettersButton.png")}
       />
-      <ModeComponent 
-      link="test"
-      title="Test"
-      imageSource={require("../../assets/images/lettersButton.png")}
+      <ModeComponent
+        navigation={navigation}
+        link="test"
+        title="Test"
+        imageSource={require("../../assets/images/lettersButton.png")}
       />
-
     </View>
   );
 };
