@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+
 
 
 const MainMenu = ({navigation}) => {
@@ -9,7 +9,7 @@ const MainMenu = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate("Home")}>
         <View>
           <Image
-            source={require("../../assets/colorsButton.png")}
+            source={require("../../assets/images/colorsButton.png")}
             style={styles.imageOneStyle}
           />
         </View>
@@ -17,14 +17,14 @@ const MainMenu = ({navigation}) => {
 
       <TouchableOpacity onPress={() => navigation.navigate("Home")}>
         <Image
-          source={require("../../assets/numbersButton.png")}
+          source={require("../../assets/images/numbersButton.png")}
           style={styles.imageTwoStyle}
         />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Home")}>
         <Image
-          source={require("../../assets/lettersButton.png")}
+          source={require("../../assets/images/lettersButton.png")}
           style={styles.imageThreeStyle}
         />
       </TouchableOpacity>

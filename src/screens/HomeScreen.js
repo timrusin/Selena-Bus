@@ -1,27 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
-
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 
 const HomeScreen = ({navigation}) => {
 
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Selena's Bus
-      </Text>
-      <Image
-        source={require("../../assets/Bus.png")}
-        style={styles.image}
-      >
-        </Image>
-      <View>
-        <Button
-          style={styles.buttonStyle}
-          onPress={() => navigation.navigate("Main")}
-          title="START!"
-        />
-      </View>
+      <Text style={styles.title}>Selena's Bus</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+        <Image
+          source={require("../../assets/images/Bus.png")}
+          style={styles.image}
+        ></Image>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -37,13 +29,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     color: 'white',
-    marginBottom: 30
+
   },
 
   image: {
-    width: 290,
-    height: 200,
-    marginBottom: 50
+    width: 310,
+    height: 230,
+    marginBottom: 150
   },
 
 
