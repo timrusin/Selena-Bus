@@ -13,7 +13,7 @@ Progress data is also tracked on the back-end and can be viewed and digested by 
 
 I can imagine adding more levels, content, and ideas in the future.
 
-## Technoligies used:
+## Technologies used:
 - React Native
 - Django
 - postgreSQL
