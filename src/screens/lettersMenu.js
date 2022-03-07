@@ -1,12 +1,30 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native'
 import ModeComponent from '../components/ModeComponent';
 
 
 
-const LettersMenu = ({navigation}) => {
+const LettersMenu = ({ navigation }) => {
+
   return (
-    <ModeComponent />
+    <View>
+      <ModeComponent
+        link="listen"
+        title="Listen"
+        imageSource={require("../../assets/images/lettersButton.png")}
+      />
+      <ModeComponent 
+      link="touch"
+      title="Play"
+      imageSource={require("../../assets/images/lettersButton.png")}
+      />
+      <ModeComponent 
+      link="test"
+      title="Test"
+      imageSource={require("../../assets/images/lettersButton.png")}
+      />
+
+    </View>
   );
 };
 

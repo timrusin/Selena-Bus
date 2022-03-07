@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Image, TouchableOpacity } from 'react-native';
 
 
 
-const ModeComponent = ({navigation}) => {
+const ModeComponent = ({navigation, link, imageSource, title}) => {
+
   return (
-    <Text>fill in props here</Text>
+      <TouchableOpacity onPress={()=> navigation.navigate({link})} >
+        <Image source={imageSource} style={{height:100, width:100}}/>
+        <Text>{title}</Text>
+      </TouchableOpacity>
   );
 };
 
