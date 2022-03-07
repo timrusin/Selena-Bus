@@ -25,7 +25,7 @@ I would also hope to build this out even furtther, once it's deveolped more with
 ## Wireframes
 ![Wireframe](https://github.com/timrusin/Selena-Bus/blob/main/Selena-Bus_wireframe.png)
 
-##User Stories
+## User Stories
 - As a user, I should be able to start the game from the home screen
 - As a user, I should be able to select what mode (colors, leters, numbers) I want to play from the main menu
 - As a user, I should be able to choose what stage I want to play (watch, interact, quiz)
