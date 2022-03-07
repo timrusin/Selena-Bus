@@ -6,7 +6,7 @@ import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-n
 const MainMenu = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
         <View>
           <Image
             source={require("../../assets/images/colorsButton.png")}
@@ -15,14 +15,14 @@ const MainMenu = ({navigation}) => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Numbers")}>
         <Image
           source={require("../../assets/images/numbersButton.png")}
           style={styles.imageTwoStyle}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Letters")}>
         <Image
           source={require("../../assets/images/lettersButton.png")}
           style={styles.imageThreeStyle}
