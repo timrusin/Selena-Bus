@@ -1,5 +1,5 @@
 import React from 'react';
-import ModeComponent from '../components/ModeComponent';
+import ModeComponent from '../../components/ModeComponent';
 import { View } from 'react-native'
 
 
@@ -9,21 +9,18 @@ const NumbersMenu = ({navigation}) => {
       <View>
         <ModeComponent
           navigation={navigation}
-          link="listen"
+          link="ListenNumbers"
           title="Listen"
-          imageSource={require("../../assets/images/numbersButton.png")}
         />
         <ModeComponent
           navigation={navigation}
-          link="touch"
+          link="TouchNumbers"
           title="Play"
-          imageSource={require("../../assets/images/numbersButton.png")}
         />
         <ModeComponent
           navigation={navigation}
-          link="test"
+          link="TestNumbers"
           title="Test"
-          imageSource={require("../../assets/images/numbersButton.png")}
         />
       </View>
     );

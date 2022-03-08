@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native'
-import ModeComponent from '../components/ModeComponent';
+import ModeComponent from '../../components/ModeComponent';
 
 
 
@@ -10,21 +10,18 @@ const LettersMenu = ({ navigation }) => {
     <View>
       <ModeComponent
         navigation={navigation}
-        link="listen"
+        link="ListenLetters"
         title="Listen"
-        imageSource={require("../../assets/images/lettersButton.png")}
       />
       <ModeComponent
         navigation={navigation}
-        link="touch"
+        link="TouchLetters"
         title="Play"
-        imageSource={require("../../assets/images/lettersButton.png")}
       />
       <ModeComponent
         navigation={navigation}
-        link="test"
+        link="TestLetters"
         title="Test"
-        imageSource={require("../../assets/images/lettersButton.png")}
       />
     </View>
   );

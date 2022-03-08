@@ -9,7 +9,7 @@ const MainMenu = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
         <View>
           <Image
-            source={require("../../assets/images/colorsButton.png")}
+            source={require("../../../assets/images/colorsButton.png")}
             style={styles.imageOneStyle}
           />
         </View>
@@ -17,14 +17,14 @@ const MainMenu = ({navigation}) => {
 
       <TouchableOpacity onPress={() => navigation.navigate("Numbers")}>
         <Image
-          source={require("../../assets/images/numbersButton.png")}
+          source={require("../../../assets/images/numbersButton.png")}
           style={styles.imageTwoStyle}
         />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Letters")}>
         <Image
-          source={require("../../assets/images/lettersButton.png")}
+          source={require("../../../assets/images/lettersButton.png")}
           style={styles.imageThreeStyle}
         />
       </TouchableOpacity>

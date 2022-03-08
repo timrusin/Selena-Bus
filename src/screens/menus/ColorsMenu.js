@@ -1,5 +1,5 @@
 import React from 'react';
-import ModeComponent from '../components/ModeComponent';
+import ModeComponent from '../../components/ModeComponent';
 import { View } from 'react-native'
 
 
@@ -9,21 +9,18 @@ const ColorsMenu = ({navigation}) => {
       <View>
         <ModeComponent
           navigation={navigation}
-          link="Home"
+          link="ListenColors"
           title="Listen"
-          imageSource={require("../../assets/images/colorsButton.png")}
         />
         <ModeComponent
           navigation={navigation}
-          link="touch"
+          link="TouchColors"
           title="Play"
-          imageSource={require("../../assets/images/colorsButton.png")}
         />
         <ModeComponent
           navigation={navigation}
-          link="test"
+          link="TestColors"
           title="Test"
-          imageSource={require("../../assets/images/colorsButton.png")}
         />
       </View>
     );
