@@ -5,6 +5,7 @@ import MainMenu from "./src/screens/menus/MainMenu";
 import ColorsMenu from "./src/screens/menus/ColorsMenu";
 import NumbersMenu from "./src/screens/menus/NumbersMenu";
 import LettersMenu from "./src/screens/menus/LettersMenu";
+import TouchColors from "./src/screens/TouchColors";
 
 
 const navigator = createStackNavigator(
@@ -14,6 +15,7 @@ const navigator = createStackNavigator(
     Colors: ColorsMenu,
     Numbers: NumbersMenu,
     Letters: LettersMenu,
+    TouchColors: TouchColors,
   },
   {
     initialRouteName: "Home",

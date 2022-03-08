@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { withNavigation } from 'react-navigation'
 
 
 const ModeComponent = ({navigation, link, title}) => {
