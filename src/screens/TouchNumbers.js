@@ -5,200 +5,74 @@ import { TouchableWithoutFeedback } from "react-native-web";
 
 
 const TouchNumbers = ({ navigation }) => {
-    const [one, setOne] = useState();
-    const [two, setTwo] = useState();
-    const [three, setThree] = useState();
-    const [four, setFour] = useState();
-    const [five, setFive] = useState();
-    const [six, setSix] = useState();
-    const [seven, setSeven] = useState();
-    const [eight, setEight] = useState();
-    const [nine, setNine] = useState();
-    const [ten, setTen] = useState();
+    const [sound, setSound] = useState();
+
+    const numberFiles = {
+        One: require('../../assets/sounds/One.m4a'),
+        Two: require('../../assets/sounds/Two.m4a'),
+        Three: require('../../assets/sounds/Three.m4a'),
+        Four: require('../../assets/sounds/Four.m4a'),
+        Five: require('../../assets/sounds/Five.m4a'),
+        Six: require('../../assets/sounds/Six.m4a'),
+        Seven: require('../../assets/sounds/Seven.m4a'),
+        Eight: require('../../assets/sounds/Eight.m4a'),
+        Nine: require('../../assets/sounds/Nine.m4a'),
+        Ten: require('../../assets/sounds/Ten.m4a')
+    }
     
-    async function playOne() {
+    async function playSound(number) {
       const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/One.m4a')
+         numberFiles[number]
       );
-      setOne(one);
+      setSound(sound);
       await sound.playAsync(); }
   
     useEffect(() => {
-      return one
+      return sound
         ? () => {
             sound.unloadAsync(); }
         : undefined;
-    }, [one]);
-
-
-    async function playTwo() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Two.m4a')
-      );
-      setTwo(two);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return two
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [two]);
-
-
-    async function playThree() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Three.m4a')
-      );
-      setThree(three);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return three
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [three]);
-
-    async function playFour() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Four.m4a')
-      );
-      setFour(four);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return four
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [four]);
-
-
-    async function playFive() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Five.m4a')
-      );
-      setFive(five);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return five
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [five]);
-
-    async function playSix() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Six.m4a')
-      );
-      setSix(six);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return six
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [six]);
-
-    async function playSeven() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Seven.m4a')
-      );
-      setSeven(seven);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return seven
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [seven]);
-
-    async function playEight() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Eight.m4a')
-      );
-      setEight(eight);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return eight
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [eight]);
-
-    async function playNine() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Nine.m4a')
-      );
-      setNine(nine);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return nine
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [nine]);
-
-    async function playTen() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Ten.m4a')
-      );
-      setTen(ten);
-      await sound.playAsync(); }
-  
-    useEffect(() => {
-      return ten
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [ten]);
-    
+    }, [sound]);
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={playOne}>
+        <TouchableOpacity onPress={()=>playSound('One')}>
           <Text style={styles.number}>1</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playTwo}>
+        <TouchableOpacity onPress={()=>playSound('Two')}>
           <Text style={styles.number}>2</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playThree}>
+        <TouchableOpacity onPress={()=>playSound('Three')}>
           <Text style={styles.number}>3</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playFour}>
+        <TouchableOpacity onPress={()=>playSound('Four')}>
           <Text style={styles.number}>4</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playFive}>
+        <TouchableOpacity onPress={()=>playSound('Five')}>
           <Text style={styles.number}>5</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playSix}>
+        <TouchableOpacity onPress={()=>playSound('Six')}>
           <Text style={styles.number}>6</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playSeven}>
+        <TouchableOpacity onPress={()=>playSound('Seven')}>
           <Text style={styles.number}>7</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playEight}>
+        <TouchableOpacity onPress={()=>playSound('Eight')}>
           <Text style={styles.number}>8</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playNine}>
+        <TouchableOpacity onPress={()=>playSound('Nine')}>
           <Text style={styles.number}>9</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={playTen} style={{ marginRight: 19 }}>
+        <TouchableOpacity onPress={()=>playSound('Ten')} style={{ marginRight: 19 }}>
           <Text style={styles.number}>10</Text>
         </TouchableOpacity>
 
