@@ -20,6 +20,8 @@ const navigator = createStackNavigator(
       title: "Selena's Bus",
     },
   }
+
+  
   
 );
 

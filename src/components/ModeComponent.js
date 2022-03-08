@@ -3,31 +3,35 @@ import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 
 const ModeComponent = ({navigation, link, imageSource, title}) => {
-    console.log(navigation)
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate(link)}>
-        <Image style={styles.images} source={imageSource} />
-        <Text>{title}</Text>
+        {/* <Image style={styles.images} source={imageSource} /> */}
+        <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     display: 'flex',
-    alignItems: 'center',
-    backgroundColor: 'purple',
+    alignItems: "center",
+    justifyContent: 'space-between',
+    backgroundColor: "purple",
   },
 
-  images:{
-    textAlign: 'center',
+  images: {
     width: 170,
     height: 180,
     marginTop: 30,
-  }
-})
+  },
+
+  title: {
+    marginVertical: 80,
+    fontSize: 80,
+  },
+});
 
 export default ModeComponent;
