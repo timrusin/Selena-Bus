@@ -9,7 +9,7 @@ const MainMenu = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
         <View>
           <Image
-            source={require("../../../assets/images/colorsButton.png")}
+            source={require("../../../assets/images/colorsNew.png")}
             style={styles.imageOneStyle}
           />
         </View>
@@ -43,16 +43,13 @@ const styles = StyleSheet.create({
   },
 
   imageOneStyle: {
-    width: 200,
-    height: 150,
-    marginTop: 20
-  
+    width: 250,
+    height: 240,
   },
 
   imageTwoStyle: {
     width:255,
     height: 120,
-    marginTop: 20
   },
 
   imageThreeStyle: {
