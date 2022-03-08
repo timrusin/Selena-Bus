@@ -208,7 +208,7 @@ const TouchNumbers = ({ navigation }) => {
         >
           <Image
             source={require("../../assets/images/Bus.png")}
-            style={{ height: 120, width: 160, marginVertical: 10 }}
+            style={{ height: 90, width: 130, marginVertical: 10 }}
           />
         </TouchableOpacity>
       </View>
