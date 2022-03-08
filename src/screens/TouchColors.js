@@ -70,7 +70,6 @@ const TouchColors = ({ navigation }) => {
     }, [purple]);
 
 
-
     async function playYellow() {
       const { sound } = await Audio.Sound.createAsync(
          require('../../assets/sounds/Yellow.m4a')
