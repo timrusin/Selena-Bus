@@ -17,7 +17,6 @@ I would also hope to build this out even furtther, once it's deveolped more with
 
 ## Technologies used:
 - React Native
-- expo
 - JS
 - Django
 - Python
