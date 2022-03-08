@@ -17,7 +17,7 @@ const MainMenu = ({navigation}) => {
 
       <TouchableOpacity onPress={() => navigation.navigate("Numbers")}>
         <Image
-          source={require("../../../assets/images/numbersButton.png")}
+          source={require("../../../assets/images/numbersNew.png")}
           style={styles.imageTwoStyle}
         />
       </TouchableOpacity>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
 
   imageTwoStyle: {
-    width:250,
-    height: 155,
+    width:255,
+    height: 120,
     marginTop: 20
   },
 
