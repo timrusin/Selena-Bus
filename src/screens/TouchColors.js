@@ -1,156 +1,188 @@
 import { React, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Audio } from 'expo-av'
+import { setStatusBarBackgroundColor } from "expo-status-bar";
 
 
 const TouchColors = ({ navigation }) => {
-    const [red, setRed] = useState();
-    const [blue, setBlue] = useState();
-    const [green, setGreen] = useState();
-    const [purple, setPurple] = useState();
-    const [yellow, setYellow] = useState();
-    const [brown, setBrown] = useState();
+    // init sound 
+    const [ sound, setSound] = useState()
+    // commenting out these previous pieces of state 
+    // const [red, setRed] = useState();
+    // const [blue, setBlue] = useState();
+    // const [green, setGreen] = useState();
+    // const [purple, setPurple] = useState();
+    // const [yellow, setYellow] = useState();
+    // const [brown, setBrown] = useState();
+
+    // set files to be required before you call them because you can't just interpolate requires on the fly
+    const colorFiles = {
+      Blue: require('../../assets/sounds/Blue.m4a'),
+      Red: require('../../assets/sounds/Red.m4a'),
+    }
+
+    // pass in the color 
+    async function playSound(color) {
+      const { sound } = await Audio.Sound.createAsync(
+        // reference the color in the object above to be required
+        colorFiles[color]
+      )
+      setSound(sound)
+      await sound.playAsync()
+    }
+
+    useEffect(() => {
+      return sound
+        ? () => {
+            sound.unloadAsync()
+          }
+        : undefined
+    }, [sound])
+
+
     
-    async function playRed() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Red.m4a')
-      );
-      setRed(red);
-      await sound.playAsync(); }
+    // async function playRed() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Red.m4a')
+    //   );
+    //   setRed(red);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return red
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [red]);
+    // useEffect(() => {
+    //   return red
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [red]);
 
 
-    async function playBlue() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Blue.m4a')
-      );
-      setBlue(blue);
-      await sound.playAsync(); }
+    // async function playBlue() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Blue.m4a')
+    //   );
+    //   setBlue(blue);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return blue
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [blue]);
+    // useEffect(() => {
+    //   return blue
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [blue]);
 
+    // commenting out to simplify 
 
-    async function playGreen() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Green.m4a')
-      );
-      setGreen(green);
-      await sound.playAsync(); }
+    // async function playGreen() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Green.m4a')
+    //   );
+    //   setGreen(green);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return green
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [green]);
+    // useEffect(() => {
+    //   return green
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [green]);
 
-    async function playPurple() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Purple.m4a')
-      );
-      setPurple(purple);
-      await sound.playAsync(); }
+    // async function playPurple() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Purple.m4a')
+    //   );
+    //   setPurple(purple);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return purple
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [purple]);
+    // useEffect(() => {
+    //   return purple
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [purple]);
 
 
 
-    async function playYellow() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Yellow.m4a')
-      );
-      setYellow(yellow);
-      await sound.playAsync(); }
+    // async function playYellow() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Yellow.m4a')
+    //   );
+    //   setYellow(yellow);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return yellow
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [yellow]);
+    // useEffect(() => {
+    //   return yellow
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [yellow]);
 
-    async function playBrown() {
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/sounds/Brown.m4a')
-      );
-      setBrown(brown);
-      await sound.playAsync(); }
+    // async function playBrown() {
+    //   const { sound } = await Audio.Sound.createAsync(
+    //      require('../../assets/sounds/Brown.m4a')
+    //   );
+    //   setBrown(brown);
+    //   await sound.playAsync(); }
   
-    useEffect(() => {
-      return brown
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [brown]);
+    // useEffect(() => {
+    //   return brown
+    //     ? () => {
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [brown]);
 
 
-
+    // notice how I have an anonymous function to call the particular color here. 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={playRed}
-          style={{ backgroundColor: "red", marginTop: 20, marginVertical: 10 }}
-        >
+        <TouchableOpacity
+          onPress={() => playSound('Red')}
+          style={{ backgroundColor: 'red', marginTop: 20, marginVertical: 10 }}>
           <View style={styles.box} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={playBlue}
-          style={{ backgroundColor: "blue", marginTop: 20, marginVertical: 10 }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={playGreen}
-          style={{ backgroundColor: "green", marginVertical: 10 }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={playPurple}
-          style={{ backgroundColor: "purple", marginVertical: 10 }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={playYellow}
+        <TouchableOpacity
+          onPress={() => playSound('Blue')}
           style={{
-            backgroundColor: "yellow",
+            backgroundColor: 'blue',
+            marginTop: 20,
             marginVertical: 10,
-
-          }}
-        >
+          }}>
           <View style={styles.box} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={playBrown}
+        <TouchableOpacity
+          onPress={playSound}
+          style={{ backgroundColor: 'green', marginVertical: 10 }}>
+          <View style={styles.box} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={playSound}
+          style={{ backgroundColor: 'purple', marginVertical: 10 }}>
+          <View style={styles.box} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={playSound}
           style={{
-            backgroundColor: "brown",
+            backgroundColor: 'yellow',
             marginVertical: 10,
-
-          }}
-        >
+          }}>
           <View style={styles.box} />
         </TouchableOpacity>
-        
-        <TouchableOpacity onPress={()=> navigation.navigate("Home")}>
-            <Image
-              source={require("../../assets/images/Bus.png")}
-              style={{ height: 120, width:160, marginVertical: 10 }}
-            />
+        <TouchableOpacity
+          onPress={playSound}
+          style={{
+            backgroundColor: 'brown',
+            marginVertical: 10,
+          }}>
+          <View style={styles.box} />
         </TouchableOpacity>
-        
+
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image
+            source={require('../../assets/images/Bus.png')}
+            style={{ height: 120, width: 160, marginVertical: 10 }}
+          />
+        </TouchableOpacity>
       </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
