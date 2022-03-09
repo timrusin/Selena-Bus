@@ -6,10 +6,8 @@ import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNat
 const QuizColors = ()=>{
   const [sound, setSound] = useState();
   const [random, setRandom] = useState(getRandomColor);
-
-  //Score keeping variables
-  let correct = 0;
-  let incorrect = 0;
+  const [correct, setCorrect] = useState (0)
+  const [incorrect, setIncorrect] = useState (0)
 
   //This is to generate a random number to pull from the colorsArray
   const colorsArray = ["Red", "Blue", "Green", "Purple", "Yellow", "Brown"];
@@ -24,6 +22,8 @@ const QuizColors = ()=>{
     Purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
     Yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
     Brown: require("../../assets/sounds/quiz_color/QuizBrown.m4a"),
+    Correct: require("../../assets/sounds/shared/Correct.m4a"),
+    Incorrect: require("../../assets/sounds/shared/Incorrect.m4a")
   };
   //this is essentially my audio player
   useEffect(() => {
@@ -51,6 +51,32 @@ const QuizColors = ()=>{
         console.log(random)
 }
 
+    async function Correct() { 
+        console.log("correct")
+        const { sound } = await Audio.Sound.createAsync(
+            //referencing the color in the object above to be played
+            questionFiles["Correct"]
+        );
+        setSound(sound);
+        await sound.playAsync();
+        setCorrect(correct + 1)
+
+    }
+
+    async function Incorrect() {
+        console.log("Incorrect")
+        const { sound } = await Audio.Sound.createAsync(
+            //referencing the color in the object above to be played
+            questionFiles["Incorrect"]
+        );
+        setSound(sound);
+        await sound.playAsync();
+        setIncorrect(incorrect + 1)
+
+    }
+    console.log('correct = ' + correct )
+    console.log('incorrect = ' + incorrect )
+
 
   // OK, what needs to happen
   //- Automaticaly start with audio asking "OK, Selena, what color is 'Red'"
@@ -77,11 +103,11 @@ const QuizColors = ()=>{
     <SafeAreaView style={styles.container}>
       <Button title="Red" onPress={() => questionOneAudio("Red")} />
 
-      <TouchableOpacity style={styles.touch}>
+      <TouchableOpacity style={styles.touch} onPress={Correct}>
         <View style={styles.box} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.touch, { backgroundColor: random }]}>
+      <TouchableOpacity style={[styles.touch, { backgroundColor: random }]} onPress={Incorrect}>
         <View style={styles.box} />
       </TouchableOpacity>
     </SafeAreaView>
@@ -91,10 +117,9 @@ const QuizColors = ()=>{
     const styles = StyleSheet.create({
         container: {
             display: "flex",
-            justifyContent: 'center',
             backgroundColor: 'black',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
+            alignItems: 'center',
         },
 
         touch: {
@@ -102,15 +127,14 @@ const QuizColors = ()=>{
             borderColor: "white",
             borderRadius: 20,
             backgroundColor: "red",
-            marginVertical: 10,
-            marginLeft: 20,
+            marginVertical: 20,
+           
         },
 
         box: {
-            width: 50,
-            height: 50,
-            marginTop: 40,
-            marginBottom: 40,
+            width: 200,
+            height: 200,
+            marginVertical: 50,
             marginHorizontal: 30,
         }
     })
