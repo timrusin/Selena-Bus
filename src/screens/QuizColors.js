@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react'
-import { View, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
+import { View, SafeAreaView, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
 import { Audio } from 'expo-av' 
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const QuizColors = ()=>{
   const [sound, setSound] = useState();
-  const [color, setColor] = useState();
+  const [random, setRandom] = useState(getRandomColor);
 
+  //Score keeping variables
   let correct = 0;
   let incorrect = 0;
-    
+
+  //This is to generate a random number to pull from the colorsArray
   const colorsArray = ["Red", "Blue", "Green", "Purple", "Yellow", "Brown"];
+  const randomNumber = Math.floor(Math.random()* 6)
+  const getRandomColor = colorsArray[randomNumber]
+
 
   const questionFiles = {
     Red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
@@ -19,7 +25,7 @@ const QuizColors = ()=>{
     Yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
     Brown: require("../../assets/sounds/quiz_color/QuizBrown.m4a"),
   };
-
+  //this is essentially my audio player
   useEffect(() => {
     return sound
       ? () => {
@@ -27,17 +33,24 @@ const QuizColors = ()=>{
       : undefined;
   },[sound]);
 
-
+  //Our QUESTION is called by the color button
   async function questionOneAudio(color) {
     const { sound } = await Audio.Sound.createAsync(
-        //referencing the in the object above to be required
+        //referencing the color in the object above to be played
         questionFiles[color]
     );
     setSound(sound);
-    await sound.playAsync(); }
+    await sound.playAsync();
+        setRandom(getRandomColor);
+        if (random === color) {
+          setRandom(getRandomColor);
+          if (random === color){
+              return
+          }
+        }
+        console.log(random)
+}
 
-
- 
 
   // OK, what needs to happen
   //- Automaticaly start with audio asking "OK, Selena, what color is 'Red'"
@@ -61,33 +74,17 @@ const QuizColors = ()=>{
   //all of the previous game scores to view
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Button title="Red" onPress={() => questionOneAudio("Red")} />
-      <TouchableOpacity  style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "red",
-            marginVertical: 10,
-            marginLeft: 20,
-          }}>
-          <View style={styles.box}/>
-          
-      </TouchableOpacity  >
-      
-      <TouchableOpacity  style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "green",
-            marginVertical: 10,
-            marginLeft: 20,
-          }}>
-      <View style={styles.box}/>
 
-      </TouchableOpacity  >
-    
-    </View>
+      <TouchableOpacity style={styles.touch}>
+        <View style={styles.box} />
+      </TouchableOpacity>
+
+      <TouchableOpacity style={[styles.touch, { backgroundColor: random }]}>
+        <View style={styles.box} />
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 }
 
@@ -99,6 +96,16 @@ const QuizColors = ()=>{
             flexDirection: 'row',
             flexWrap: 'wrap',
         },
+
+        touch: {
+            borderWidth: 2,
+            borderColor: "white",
+            borderRadius: 20,
+            backgroundColor: "red",
+            marginVertical: 10,
+            marginLeft: 20,
+        },
+
         box: {
             width: 50,
             height: 50,

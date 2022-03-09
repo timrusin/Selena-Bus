@@ -18,7 +18,7 @@ const TouchColors = ({ navigation }) => {
     
     async function playSound(color) {
       const { sound } = await Audio.Sound.createAsync(
-          //referencing the in the object above to be required
+          //referencing the color in the object above to be required
           colorFiles[color]
       );
       setSound(sound);
