@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { View, SafeAreaView, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
 import { Audio } from 'expo-av' 
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+
 
 const QuizColors = ()=>{
   const [sound, setSound] = useState();
@@ -13,7 +13,6 @@ const QuizColors = ()=>{
   const colorsArray = ["Red", "Blue", "Green", "Purple", "Yellow", "Brown"];
   const randomNumber = Math.floor(Math.random()* 6)
   const getRandomColor = colorsArray[randomNumber]
-
 
   const questionFiles = {
     Red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
@@ -33,6 +32,13 @@ const QuizColors = ()=>{
       : undefined;
   },[sound]);
 
+  useEffect(() => {
+      if (random !== undefined){
+        console.log(random)
+        console.log(getRandomColor)
+    }
+  },[random])
+
   //Our QUESTION is called by the color button
   async function questionOneAudio(color) {
     const { sound } = await Audio.Sound.createAsync(
@@ -41,16 +47,16 @@ const QuizColors = ()=>{
     );
     setSound(sound);
     await sound.playAsync();
+    setRandom(getRandomColor);
+    if (random === color) {
         setRandom(getRandomColor);
-        if (random === color) {
-          setRandom(getRandomColor);
-          if (random === color){
-              return
-          }
+        // console.log("Here is the console log on 47")
+        if (random === color){
+            return;
         }
-        console.log(random)
+    }
 }
-
+    //Called if she selects the correct color
     async function Correct() { 
         console.log("correct")
         const { sound } = await Audio.Sound.createAsync(
@@ -60,9 +66,10 @@ const QuizColors = ()=>{
         setSound(sound);
         await sound.playAsync();
         setCorrect(correct + 1)
+        //move on to next color combonation --??
 
     }
-
+    //called is she selects the incorrect color
     async function Incorrect() {
         console.log("Incorrect")
         const { sound } = await Audio.Sound.createAsync(
