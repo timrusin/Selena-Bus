@@ -7,7 +7,12 @@ import NumbersMenu from "./src/screens/menus/NumbersMenu";
 import LettersMenu from "./src/screens/menus/LettersMenu";
 import TouchColors from "./src/screens/TouchColors";
 import TouchNumbers from "./src/screens/TouchNumbers";
+import TouchLetters from "./src/screens/TouchLetters";
+import { LogBox } from 'react-native';
 
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);
 
 const navigator = createStackNavigator(
   {
@@ -17,7 +22,8 @@ const navigator = createStackNavigator(
     Numbers: NumbersMenu,
     Letters: LettersMenu,
     TouchColors: TouchColors,
-    TouchNumbers: TouchNumbers
+    TouchNumbers: TouchNumbers,
+    TouchLetters: TouchLetters,
   },
   {
     initialRouteName: "Home",
