@@ -15,7 +15,15 @@ const TouchColors = ({ navigation }) => {
         Yellow: require('../../assets/sounds/colors/Yellow.m4a'),
         Brown: require('../../assets/sounds/colors/Brown.m4a'),
     }
-    
+    //this is bscasilly my audio player
+    useEffect(() => {
+      return sound
+        ? () => {
+            sound.unloadAsync(); }
+        : undefined;
+    }, [sound]);
+
+    //
     async function playSound(color) {
       const { sound } = await Audio.Sound.createAsync(
           //referencing the color in the object above to be required
@@ -24,93 +32,52 @@ const TouchColors = ({ navigation }) => {
       setSound(sound);
       await sound.playAsync(); }
   
-    useEffect(() => {
-      return sound
-        ? () => {
-            sound.unloadAsync(); }
-        : undefined;
-    }, [sound]);
 
     return (
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => playSound("Red")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "red",
-            marginTop: 20,
-            marginVertical: 10,
-          }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => playSound("Blue")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "blue",
-            marginTop: 20,
-            marginVertical: 10,
-            marginLeft: 20,
-          }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => playSound("Green")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "green",
-            marginVertical: 10,
-          }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => playSound("Purple")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "purple",
-            marginVertical: 10,
-            marginLeft: 20,
-          }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => playSound("Yellow")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "yellow",
-            marginVertical: 10,
-          }}
-        >
-          <View style={styles.box} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => playSound("Brown")}
-          style={{
-            borderWidth: 2,
-            borderColor: "white",
-            borderRadius: 20,
-            backgroundColor: "brown",
-            marginVertical: 10,
-            marginLeft: 20,
-          }}
+          style={[styles.button, { backgroundColor: "red" }]}
         >
           <View style={styles.box} />
         </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={() => playSound("Blue")}
+          style={[styles.button, { backgroundColor: "blue", marginLeft: 20 }]}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => playSound("Green")}
+          style={[styles.button, { backgroundColor: "green" }]}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => playSound("Purple")}
+          style={[styles.button, { backgroundColor: "purple", marginLeft: 20 }]}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => playSound("Yellow")}
+          style={[styles.button, { backgroundColor: "yellow" }]}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => playSound("Brown")}
+          style={[styles.button, { backgroundColor: "brown", marginLeft: 20 }]}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+
+        
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
             source={require("../../assets/images/Bus.png")}
@@ -136,7 +103,16 @@ const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 40,
         marginHorizontal: 30,
-    }
-})
+    },
+
+    button: {
+      borderWidth: 2,
+      borderColor: "white",
+      borderRadius: 20,
+      marginTop: 20,
+      marginVertical: 10,
+    },
+  }
+)
 
 export default TouchColors

@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react'
 import { View, SafeAreaView, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
 import { Audio } from 'expo-av' 
 
-
 const QuizColors = ()=>{
   const [sound, setSound] = useState();
-  const [random, setRandom] = useState(getRandomColor);
+  const [random, setRandom] = useState();
   const [correct, setCorrect] = useState (0)
   const [incorrect, setIncorrect] = useState (0)
 
@@ -34,8 +33,8 @@ const QuizColors = ()=>{
 
   useEffect(() => {
       if (random !== undefined){
-        console.log(random)
-        console.log(getRandomColor)
+        console.log("this is the random state " + random)
+        console.log("this is the getRandmoColor " + getRandomColor)
     }
   },[random])
 
@@ -89,17 +88,17 @@ const QuizColors = ()=>{
   //- Automaticaly start with audio asking "OK, Selena, what color is 'Red'"
   //- Two color blocks should be on the screen - One with the correct color and one random color (within the other 5 colors)
   //- if she touches the correct color
-  //- audio plays "YAY! correct!" +1 to correct score variable
+  //- audio plays "YAY! correct!" correct state increases by 1
   //- we move to the next question
   // if she gets it wrong
-  //- audio plays "close, try again" +1 to incorrect score variable
+  //- audio plays "close, try again" incorrect state increase by 1
   //This continues until she get's it right and then we move on to next quesiton
   //repeat for 3 questions
   // When game is over
   //- Audio plays "Good job Selena"
   //- display Total score component displaying the amount corect and incorrect
   //- Data saves to backend with the following model:
-  // date: 'string', - not ure how to aout generate this yet of course
+  // date: 'string', - not sure how to auto generate this yet of course
   // correct: number
   //incorrect: number
 
