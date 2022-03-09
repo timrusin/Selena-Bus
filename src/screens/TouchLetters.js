@@ -8,13 +8,13 @@ const TouchLetters = ({ navigation }) => {
 
     //loading all of my sounds
     const letterFiles = {
-        A: require('../../assets/sounds/A.m4a'),
-        B: require('../../assets/sounds/B.m4a'),
-        C: require('../../assets/sounds/C.m4a'),
-        D: require('../../assets/sounds/D.m4a'),
-        E: require('../../assets/sounds/E.m4a'),
-        F: require('../../assets/sounds/F.m4a'),
-        G: require('../../assets/sounds/G.m4a'),
+        A: require('../../assets/sounds/letters/A.m4a'),
+        B: require('../../assets/sounds/letters/B.m4a'),
+        C: require('../../assets/sounds/letters/C.m4a'),
+        D: require('../../assets/sounds/letters/D.m4a'),
+        E: require('../../assets/sounds/letters/E.m4a'),
+        F: require('../../assets/sounds/letters/F.m4a'),
+        G: require('../../assets/sounds/letters/G.m4a'),
     }
     
     async function playSound(letter) {

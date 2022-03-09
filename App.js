@@ -8,6 +8,7 @@ import LettersMenu from "./src/screens/menus/LettersMenu";
 import TouchColors from "./src/screens/TouchColors";
 import TouchNumbers from "./src/screens/TouchNumbers";
 import TouchLetters from "./src/screens/TouchLetters";
+import QuizColors from "./src/screens/QuizColors";
 
 const navigator = createStackNavigator(
   {
@@ -19,6 +20,7 @@ const navigator = createStackNavigator(
     TouchColors: TouchColors,
     TouchNumbers: TouchNumbers,
     TouchLetters: TouchLetters,
+    QuizColors: QuizColors,
   },
   {
     initialRouteName: "Home",

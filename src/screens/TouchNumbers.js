@@ -8,16 +8,16 @@ const TouchNumbers = ({ navigation }) => {
     const [sound, setSound] = useState();
 
     const numberFiles = {
-        One: require('../../assets/sounds/One.m4a'),
-        Two: require('../../assets/sounds/Two.m4a'),
-        Three: require('../../assets/sounds/Three.m4a'),
-        Four: require('../../assets/sounds/Four.m4a'),
-        Five: require('../../assets/sounds/Five.m4a'),
-        Six: require('../../assets/sounds/Six.m4a'),
-        Seven: require('../../assets/sounds/Seven.m4a'),
-        Eight: require('../../assets/sounds/Eight.m4a'),
-        Nine: require('../../assets/sounds/Nine.m4a'),
-        Ten: require('../../assets/sounds/Ten.m4a')
+        One: require('../../assets/sounds/numbers/One.m4a'),
+        Two: require('../../assets/sounds/numbers/Two.m4a'),
+        Three: require('../../assets/sounds/numbers/Three.m4a'),
+        Four: require('../../assets/sounds/numbers/Four.m4a'),
+        Five: require('../../assets/sounds/numbers/Five.m4a'),
+        Six: require('../../assets/sounds/numbers/Six.m4a'),
+        Seven: require('../../assets/sounds/numbers/Seven.m4a'),
+        Eight: require('../../assets/sounds/numbers/Eight.m4a'),
+        Nine: require('../../assets/sounds/numbers/Nine.m4a'),
+        Ten: require('../../assets/sounds/numbers/Ten.m4a')
     }
     
     async function playSound(number) {

@@ -19,7 +19,7 @@ const ColorsMenu = ({navigation}) => {
         />
         <ModeComponent
           navigation={navigation}
-          link="TestColors"
+          link="QuizColors"
           title="Test"
         />
       </View>

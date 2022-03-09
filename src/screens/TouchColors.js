@@ -8,12 +8,12 @@ const TouchColors = ({ navigation }) => {
 
     //loading all of my sounds
     const colorFiles = {
-        Red: require('../../assets/sounds/Red.m4a'),
-        Blue: require('../../assets/sounds/Blue.m4a'),
-        Green: require('../../assets/sounds/Green.m4a'),
-        Purple: require('../../assets/sounds/Purple.m4a'),
-        Yellow: require('../../assets/sounds/Yellow.m4a'),
-        Brown: require('../../assets/sounds/Brown.m4a'),
+        Red: require('../../assets/sounds/colors/Red.m4a'),
+        Blue: require('../../assets/sounds/colors/Blue.m4a'),
+        Green: require('../../assets/sounds/colors/Green.m4a'),
+        Purple: require('../../assets/sounds/colors/Purple.m4a'),
+        Yellow: require('../../assets/sounds/colors/Yellow.m4a'),
+        Brown: require('../../assets/sounds/colors/Brown.m4a'),
     }
     
     async function playSound(color) {
