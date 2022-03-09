@@ -106,7 +106,8 @@ const TouchNumbers = ({ navigation }) => {
               height: 90,
               width: 130,
               marginVertical: 10,
-              marginBottom: 30,
+              marginBottom: 150,
+              marginHorizontal: 100,
             }}
           />
         </TouchableOpacity>

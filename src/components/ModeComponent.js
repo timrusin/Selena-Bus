@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginVertical: 80,
     fontSize: 80,
+    marginVertical: 80,
   },
 });
 
