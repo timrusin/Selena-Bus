@@ -36,53 +36,78 @@ const TouchNumbers = ({ navigation }) => {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=>playSound('One')}>
+        <TouchableOpacity onPress={() => playSound("One")}>
           <Text style={styles.number}>1</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Two')}>
+        <TouchableOpacity onPress={() => playSound("Two")}>
           <Text style={styles.number}>2</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Three')}>
+        <TouchableOpacity onPress={() => playSound("Three")}>
           <Text style={styles.number}>3</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Four')}>
+        <TouchableOpacity onPress={() => playSound("Four")}>
           <Text style={styles.number}>4</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Five')}>
+        <TouchableOpacity onPress={() => playSound("Five")}>
           <Text style={styles.number}>5</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Six')}>
+        <TouchableOpacity onPress={() => playSound("Six")}>
           <Text style={styles.number}>6</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Seven')}>
+        <TouchableOpacity onPress={() => playSound("Seven")}>
           <Text style={styles.number}>7</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Eight')}>
+        <TouchableOpacity onPress={() => playSound("Eight")}>
           <Text style={styles.number}>8</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Nine')}>
+        <TouchableOpacity onPress={() => playSound("Nine")}>
           <Text style={styles.number}>9</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>playSound('Ten')} style={{ marginRight: 19 }}>
-          <Text style={styles.number}>10</Text>
+        <TouchableOpacity
+          onPress={() => playSound("Ten")}
+          style={{ marginRight: 19 }}
+        >
+          <Text
+            style={{
+              display: "flex",
+              alignSelf: "center",
+              fontSize: 110,
+              color: "white",
+              width: 128,
+              marginVertical: 10,
+              textShadowColor: "white",
+              textShadowRadius: 20,
+              borderWidth: 2,
+              borderRadius: 20,
+              borderColor: "white",
+              textAlign: "center",
+            }}
+          >
+            10
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{ marginLeft: 40 }}
+          style={{ marginHorizontal: 57 }}
           onPress={() => navigation.navigate("Home")}
         >
           <Image
             source={require("../../assets/images/Bus.png")}
-            style={{ height: 90, width: 130, marginVertical: 10 }}
+            style={{
+              height: 90,
+              width: 130,
+              marginVertical: 10,
+              marginBottom: 30,
+            }}
           />
         </TouchableOpacity>
       </View>
@@ -91,7 +116,6 @@ const TouchNumbers = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        display: "flex",
         justifyContent: 'center',
         backgroundColor: 'black',
         flexDirection: 'row',
@@ -99,11 +123,17 @@ const styles = StyleSheet.create({
     },
 
     number: {
-      fontSize: 130,
+      fontSize: 110,
+      textAlign: 'center',
       color: 'white',
       marginHorizontal:20,
+      marginVertical: 10,
       textShadowColor: 'white',
-      textShadowRadius: 20
+      textShadowRadius: 20,
+      borderWidth: 2,
+      borderColor: 'white',
+      borderRadius: 20,
+      width: 90
     },
 })
 
