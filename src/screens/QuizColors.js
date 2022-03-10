@@ -1,6 +1,3 @@
-// OK, what needs to happen
-//- Automaticaly start with audio asking "OK, Selena, what color is 'randomcolor'"
-//- Two color blocks should be on the screen - One with the correct color and one random color (within the other 5 colors)
 //- if she touches the correct color
 //- audio plays "YAY! correct!" correct state increases by 1
 //- we move to the next question
@@ -20,30 +17,35 @@
 //all of the previous game scores to view
 
 import { useState, useEffect } from "react";
-import { View, TouchableOpacity, Button, Text, StyleSheet } from "react-native";
+import { View, TouchableOpacity,StyleSheet } from "react-native";
 import { Audio } from "expo-av";
+
+const audioFiles = {
+  red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
+  blue: require("../../assets/sounds/quiz_color/QuizBlue.m4a"),
+  green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
+  purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
+  yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
+  orange: require("../../assets/sounds/quiz_color/QuizOrange.m4a"),
+  Correct: require("../../assets/sounds/shared/Correct.m4a"),
+  Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
+};
 
 const QuizColors = () => {
   const [sound, setSound] = useState();
-  const [random, setRandom] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
+  const [increment, setIncrement] = useState(0)
+  //set another state for tracking the randomColor 
 
-  //This is to generate a random number to pull from the colorsArray
+  //Increment state is setting the qustion color within the color's array
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
+  const qColor = colorsArray[increment]
+  console.log("line 34 " + qColor)
+  
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
 
-  const questionFiles = {
-    red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
-    blue: require("../../assets/sounds/quiz_color/QuizBlue.m4a"),
-    green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
-    purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
-    yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
-    orange: require("../../assets/sounds/quiz_color/QuizOrange.m4a"), //****re-record as orange****
-    Correct: require("../../assets/sounds/shared/Correct.m4a"),
-    Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
-  };
   //this is essentially my audio player
   useEffect(() => {
     return sound;
@@ -51,51 +53,40 @@ const QuizColors = () => {
 
   //Our QUESTION is called (on screen load)
   useEffect(() => {
-    setRandom(getRandomColor);
-    questionOneAudio(getRandomColor);
+    Question();
   }, []);
+ console.log(qColor)
 
-  async function questionOneAudio(color) {
-    const { sound } = await Audio.Sound.createAsync(
-      //referencing the color in the object above to be played
-      questionFiles[color]
-    );
+  async function Question() {
+    const { sound } = await Audio.Sound.createAsync(audioFiles[qColor]); //calls the question color to be played
     setSound(sound);
     await sound.playAsync();
-    if (getRandomColor === color) {
-      return;
-    }
+    console.log("line 64 " + qColor)
   }
-  //Called if she selects the correct color
+
   async function Correct() {
-    const { sound } = await Audio.Sound.createAsync(
-      //referencing the color in the object above to be played
-      questionFiles["Correct"]
-    );
+    const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
     setSound(sound);
-    await sound.playAsync();
+    await sound.playAsync()
     setCorrect(correct + 1);
+    setIncrement( increment + 1)
+    setTimeout(Question, 3000)
   }
 
-  //called is she selects the incorrect color
   async function Incorrect() {
-    const { sound } = await Audio.Sound.createAsync(
-      //referencing the color in the object above to be played
-      questionFiles["Incorrect"]
-    );
+    const { sound } = await Audio.Sound.createAsync(audioFiles["Incorrect"]);
     setSound(sound);
     await sound.playAsync();
     setIncorrect(incorrect + 1);
   }
-  
+
   console.log("correct = " + correct);
   console.log("incorrect = " + incorrect);
 
-  //Game board
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={[styles.touch, { backgroundColor: random }]}
+        style={[styles.touch, { backgroundColor: qColor }]}
         onPress={Correct}
       >
         <View style={styles.box} />
@@ -110,6 +101,7 @@ const QuizColors = () => {
     </View>
   );
 };
+
 
     const styles = StyleSheet.create({
       container: {
