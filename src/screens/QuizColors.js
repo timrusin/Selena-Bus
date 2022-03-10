@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { View, SafeAreaView, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
+import { View, TouchableOpacity, Button, Text, StyleSheet } from 'react-native'
 import { Audio } from 'expo-av' 
 
 const QuizColors = ()=>{
@@ -9,17 +9,17 @@ const QuizColors = ()=>{
   const [incorrect, setIncorrect] = useState (0)
 
   //This is to generate a random number to pull from the colorsArray
-  const colorsArray = ["Red", "Blue", "Green", "Purple", "Yellow", "Brown"];
+  const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const randomNumber = Math.floor(Math.random()* 6)
   const getRandomColor = colorsArray[randomNumber]
 
   const questionFiles = {
-    Red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
-    Blue: require("../../assets/sounds/quiz_color/QuizBlue.m4a"),
-    Green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
-    Purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
-    Yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
-    Brown: require("../../assets/sounds/quiz_color/QuizBrown.m4a"),
+    red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
+    blue: require("../../assets/sounds/quiz_color/QuizBlue.m4a"),
+    green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
+    purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
+    yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
+    brown: require("../../assets/sounds/quiz_color/QuizBrown.m4a"),//****re-record as orange****
     Correct: require("../../assets/sounds/shared/Correct.m4a"),
     Incorrect: require("../../assets/sounds/shared/Incorrect.m4a")
   };
@@ -31,13 +31,13 @@ const QuizColors = ()=>{
       : undefined;
   },[sound]);
 
-  useEffect(() => {
-      if (random !== undefined){
-        console.log("this is the random state " + random)
-        console.log("this is the getRandmoColor " + getRandomColor)
-        console.log("why are they different???")
-    }
-  },[random])
+  // useEffect(() => {
+  //     if (random !== undefined){
+  //       console.log("this is the random state " + random)
+  //       console.log("this is the getRandmoColor " + getRandomColor)
+  //       console.log("why are they different???")
+  //   }
+  // },[random])
 
   //Our QUESTION is called by the color button
   async function questionOneAudio(color) {
@@ -47,18 +47,15 @@ const QuizColors = ()=>{
     );
     setSound(sound);
     await sound.playAsync();
-    setRandom(getRandomColor);
-    if (random === color) {
-        setRandom(getRandomColor);
-        // console.log("Here is the console log on 47")
-        if (random === color){
-            return;
-        }
+
+    setRandom(getRandomColor)
+    console.log(getRandomColor)
+    if (getRandomColor === color){
+    setRandom('green');
     }
 }
     //Called if she selects the correct color
     async function Correct() { 
-        console.log("correct")
         const { sound } = await Audio.Sound.createAsync(
             //referencing the color in the object above to be played
             questionFiles["Correct"]
@@ -71,7 +68,6 @@ const QuizColors = ()=>{
     }
     //called is she selects the incorrect color
     async function Incorrect() {
-        console.log("Incorrect")
         const { sound } = await Audio.Sound.createAsync(
             //referencing the color in the object above to be played
             questionFiles["Incorrect"]
@@ -107,8 +103,8 @@ const QuizColors = ()=>{
   //all of the previous game scores to view
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Button title="Red" onPress={() => questionOneAudio("Green")} />
+    <View style={styles.container}>
+      <Button title="Red" onPress={() => questionOneAudio("red")} />
 
       <TouchableOpacity style={styles.touch} onPress={Correct}>
         <View style={styles.box} />
@@ -117,7 +113,7 @@ const QuizColors = ()=>{
       <TouchableOpacity style={[styles.touch, { backgroundColor: random }]} onPress={Incorrect}>
         <View style={styles.box} />
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -135,7 +131,6 @@ const QuizColors = ()=>{
             borderRadius: 20,
             backgroundColor: "red",
             marginVertical: 20,
-           
         },
 
         box: {

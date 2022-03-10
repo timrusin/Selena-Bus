@@ -13,7 +13,7 @@ const TouchColors = ({ navigation }) => {
         Green: require('../../assets/sounds/colors/Green.m4a'),
         Purple: require('../../assets/sounds/colors/Purple.m4a'),
         Yellow: require('../../assets/sounds/colors/Yellow.m4a'),
-        Brown: require('../../assets/sounds/colors/Brown.m4a'),
+        Brown: require('../../assets/sounds/colors/Brown.m4a'), //**** re-record as orange *****/
     }
     //this is bscasilly my audio player
     useEffect(() => {
@@ -57,7 +57,7 @@ const TouchColors = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => playSound("Brown")}
+          onPress={() => playSound("Brown")}//**** replace with Orange once recorded ******/
           style={[styles.button, { backgroundColor: "orange", marginLeft: 20 }]}
         >
           <View style={styles.box} />
