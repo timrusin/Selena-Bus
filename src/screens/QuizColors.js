@@ -1,10 +1,7 @@
-//- if she touches the correct color
-//- audio plays "YAY! correct!" correct state increases by 1
-//- we move to the next question
 // if she gets it wrong
 //- audio plays "close, try again" incorrect state increase by 1
 //This continues until she get's it right and then we move on to next quesiton
-//repeat for 3 questions
+//repeat for all of the colors
 // When game is over
 //- Audio plays "Good job Selena"
 //- display Total score component displaying the amount corect and incorrect
@@ -35,42 +32,46 @@ const QuizColors = () => {
   const [sound, setSound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
-  const [increment, setIncrement] = useState(0)
+  const [increment, setIncrement] = useState(0);
   //set another state for tracking the randomColor 
-
-  //Increment state is setting the qustion color within the color's array
+  
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const qColor = colorsArray[increment]
-  console.log("line 34 " + qColor)
-  
+
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
+  
+  const [wrong, setWrong] = useState(getRandomColor);
 
-  //this is essentially my audio player
-  useEffect(() => {
-    return sound;
-  }, [sound]);
+  useEffect(() => { //incrementing 
+    console.log("inside useEffect " + qColor);
+    setTimeout(()=>{
+      Question(qColor)
+    }, 1000)
+  }, [increment]);
 
-  //Our QUESTION is called (on screen load)
-  useEffect(() => {
-    Question();
-  }, []);
- console.log(qColor)
-
-  async function Question() {
-    const { sound } = await Audio.Sound.createAsync(audioFiles[qColor]); //calls the question color to be played
-    setSound(sound);
+  //**** need useEffect that checks for duplicates
+    
+  async function Question(color) {
+    console.log(increment)
+    const { sound } = await Audio.Sound.createAsync(audioFiles[color]); //calls the question color to be played
+    // setSound(sound);
     await sound.playAsync();
-    console.log("line 64 " + qColor)
   }
 
   async function Correct() {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
     setSound(sound);
     await sound.playAsync()
-    setCorrect(correct + 1);
     setIncrement( increment + 1)
-    setTimeout(Question, 3000)
+    setCorrect(correct + 1);
+    if (increment === colorsArray.length){
+      return console.log('end of array')
+    }
+    console.log(increment)
+    // if (increment === colorsArray.length + 1){
+    //   console.log("end of array")
+    // }
   }
 
   async function Incorrect() {
@@ -78,6 +79,7 @@ const QuizColors = () => {
     setSound(sound);
     await sound.playAsync();
     setIncorrect(incorrect + 1);
+    setWrong(getRandomColor)
   }
 
   console.log("correct = " + correct);
@@ -93,7 +95,7 @@ const QuizColors = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.touch, { backgroundColor: getRandomColor }]}
+        style={[styles.touch, { backgroundColor: wrong }]}
         onPress={Incorrect}
       >
         <View style={styles.box} />
@@ -101,7 +103,6 @@ const QuizColors = () => {
     </View>
   );
 };
-
 
     const styles = StyleSheet.create({
       container: {
