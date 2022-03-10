@@ -57,8 +57,8 @@ const TouchColors = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => playSound("Purple")}
-          style={[styles.button, { backgroundColor: "purple", marginLeft: 20 }]}
+          onPress={() => playSound("Brown")}
+          style={[styles.button, { backgroundColor: "orange", marginLeft: 20 }]}
         >
           <View style={styles.box} />
         </TouchableOpacity>
@@ -71,13 +71,12 @@ const TouchColors = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => playSound("Brown")}
-          style={[styles.button, { backgroundColor: "brown", marginLeft: 20 }]}
+          onPress={() => playSound("Purple")}
+          style={[styles.button, { backgroundColor: "purple", marginLeft: 20 }]}
         >
           <View style={styles.box} />
         </TouchableOpacity>
 
-        
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
             source={require("../../assets/images/Bus.png")}

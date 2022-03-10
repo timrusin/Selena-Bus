@@ -35,6 +35,7 @@ const QuizColors = ()=>{
       if (random !== undefined){
         console.log("this is the random state " + random)
         console.log("this is the getRandmoColor " + getRandomColor)
+        console.log("why are they different???")
     }
   },[random])
 
@@ -107,7 +108,7 @@ const QuizColors = ()=>{
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button title="Red" onPress={() => questionOneAudio("Red")} />
+      <Button title="Red" onPress={() => questionOneAudio("Green")} />
 
       <TouchableOpacity style={styles.touch} onPress={Correct}>
         <View style={styles.box} />
