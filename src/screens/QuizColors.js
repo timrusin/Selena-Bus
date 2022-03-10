@@ -30,7 +30,7 @@ const QuizColors = () => {
   const [incorrect, setIncorrect] = useState(0);
 
   //This is to generate a random number to pull from the colorsArray
-  const colorsArray = ["red", "blue", "green", "purple", "yellow", "brown"];
+  const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
 
@@ -40,7 +40,7 @@ const QuizColors = () => {
     green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
     purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
     yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
-    brown: require("../../assets/sounds/quiz_color/QuizBrown.m4a"), //****re-record as orange****
+    orange: require("../../assets/sounds/quiz_color/QuizOrange.m4a"), //****re-record as orange****
     Correct: require("../../assets/sounds/shared/Correct.m4a"),
     Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
   };
@@ -49,7 +49,7 @@ const QuizColors = () => {
     return sound;
   }, [sound]);
 
-  //Our QUESTION is called by the color button
+  //Our QUESTION is called (on screen load)
   useEffect(() => {
     setRandom(getRandomColor);
     questionOneAudio(getRandomColor);
@@ -87,10 +87,11 @@ const QuizColors = () => {
     await sound.playAsync();
     setIncorrect(incorrect + 1);
   }
-
+  
   console.log("correct = " + correct);
   console.log("incorrect = " + incorrect);
 
+  //Game board
   return (
     <View style={styles.container}>
       <TouchableOpacity
