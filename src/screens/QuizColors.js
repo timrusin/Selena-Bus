@@ -1,7 +1,4 @@
-// if she gets it wrong
-//- audio plays "close, try again" incorrect state increase by 1
-//This continues until she get's it right and then we move on to next quesiton
-//repeat for all of the colors
+
 // When game is over
 //- Audio plays "Good job Selena"
 //- display Total score component displaying the amount corect and incorrect
@@ -43,7 +40,6 @@ const QuizColors = () => {
 
   const [wrong, setWrong] = useState(getRandomColor);
 
-
   useEffect(() => { //incrementing 
     console.log("inside useEffect " + qColor);
     setWrong(getRandomColor)
@@ -60,29 +56,25 @@ const QuizColors = () => {
 
   useEffect(()=> {
     const pick = Math.floor(Math.random() * 2)
-      console.log(pick)
     setOrder(arrangement[pick])
   })
-
-
-  //**** need useEffect that checks for duplicates
     
   async function Question(color) {
-    console.log(increment)
+    console.log(increment);
     const { sound } = await Audio.Sound.createAsync(audioFiles[color]); //calls the question color to be played
     // setSound(sound);
     await sound.playAsync();
-    
   }
 
   async function Correct() {
+    if (increment === colorsArray.length - 1){
+      return console.log("The end") //**** This needs to load the game over screen now */
+    } else {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
     setSound(sound);
-    await sound.playAsync()
+    await sound.playAsync();
     setIncrement( increment + 1)
     setCorrect(correct + 1);
-    if (increment === colorsArray.length){
-      return console.log("The end")
   }
 }
 
@@ -126,7 +118,7 @@ const QuizColors = () => {
         borderWidth: 2,
         borderColor: "white",
         borderRadius: 20,
-        marginVertical: 20,
+        marginVertical: 40,
       },
       
       box: {
