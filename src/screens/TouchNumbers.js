@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Audio } from 'expo-av'
-import { TouchableWithoutFeedback } from "react-native-web";
 
 
 const TouchNumbers = ({ navigation }) => {

@@ -34,13 +34,10 @@ const QuizColors = () => {
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   //set another state for tracking the randomColor 
-  
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const qColor = colorsArray[increment]
-
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
-  
   const [wrong, setWrong] = useState(getRandomColor);
 
   useEffect(() => { //incrementing 
@@ -66,13 +63,9 @@ const QuizColors = () => {
     setIncrement( increment + 1)
     setCorrect(correct + 1);
     if (increment === colorsArray.length){
-      return console.log('end of array')
-    }
-    console.log(increment)
-    // if (increment === colorsArray.length + 1){
-    //   console.log("end of array")
-    // }
+      return console.log("The end")
   }
+}
 
   async function Incorrect() {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Incorrect"]);
@@ -95,7 +88,7 @@ const QuizColors = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.touch, { backgroundColor: wrong }]}
+        style={[styles.touch, { backgroundColor: getRandomColor }]}
         onPress={Incorrect}
       >
         <View style={styles.box} />

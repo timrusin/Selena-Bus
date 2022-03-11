@@ -80,7 +80,7 @@ const TouchColors = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
             source={require("../../assets/images/Bus.png")}
-            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150 }}
+            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150, }}
           />
         </TouchableOpacity>
       </View>
@@ -88,30 +88,32 @@ const TouchColors = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        display: "flex",
-        justifyContent: 'center',
-        backgroundColor: 'black',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "black",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
 
-    box: {
-        width: 100,
-        height: 100,
-        marginTop: 40,
-        marginBottom: 40,
-        marginHorizontal: 30,
-    },
+  box: {
+    width: 100,
+    height: 100,
+    marginTop: 40,
+    marginBottom: 40,
+    marginHorizontal: 30,
+  },
 
-    button: {
-      borderWidth: 2,
-      borderColor: "white",
-      borderRadius: 20,
-      marginTop: 20,
-      marginVertical: 10,
-    },
-  }
-)
+  button: {
+    borderWidth: 2,
+    borderColor: "white",
+    borderRadius: 20,
+    marginTop: 20,
+    marginVertical: 10,
+    shadowColor: "white",
+    shadowOpacity: .8,
+    shadowRadius: 10,
+  },
+});
 
 export default TouchColors
