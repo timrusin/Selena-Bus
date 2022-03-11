@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-
 
 
 const MainMenu = ({navigation}) => {

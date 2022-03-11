@@ -17,12 +17,14 @@
 // - Resisize images in PS on other computer
 // - create and save variables for colors and images in constant.js file
 // - refactor all code with new variables
+// - add audio options
 
 
 
 import { useState, useEffect } from "react";
-import { View, TouchableOpacity,StyleSheet } from "react-native";
+import { View, TouchableOpacity,StyleSheet, Text, Image } from "react-native";
 import { Audio } from "expo-av";
+
 
 const audioFiles = {
   red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
@@ -33,23 +35,29 @@ const audioFiles = {
   orange: require("../../assets/sounds/quiz_color/QuizOrange.m4a"),
   Correct: require("../../assets/sounds/shared/Correct.m4a"),
   Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
+  GameOver: require("../../assets/sounds/shared/GameOver.m4a")
 };
-const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
-const arrangement = ["column", "column-reverse"]
 
-const QuizColors = () => {
+
+const QuizColors = ({ navigation }) => {
   const [sound, setSound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [order, setOrder] = useState()
   const [blocksDisplay, setBlocksDisplay] = useState('flex')
-
+  const [overDisplay, setOverDisplay] = useState('none')
+  
+  const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
+  const arrangement = ["column", "column-reverse"]
   const qColor = colorsArray[increment]
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
-
+  
   const [wrong, setWrong] = useState(getRandomColor);
+  const dt = Date()
+  console.log(dt)
+
 
   useEffect(() => {
     setWrong(getRandomColor)
@@ -97,34 +105,59 @@ const QuizColors = () => {
 
   async function gameOver () {
     console.log('game over')
-    const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
+    const { sound } = await Audio.Sound.createAsync(audioFiles["GameOver"]);
     setSound(sound);
     await sound.playAsync();
 
     setBlocksDisplay('none')
+    setOverDisplay('flex')
   }
 
   console.log("correct = " + correct);
   console.log("incorrect = " + incorrect);
 
   return (
-    <View style={[styles.container, {display: blocksDisplay, flexDirection: order } ]}>
-      <TouchableOpacity
-        style={[styles.touch, { backgroundColor: qColor }]}
-        onPress={correctAnswer}
-      >
-        <View style={styles.box} />
-      </TouchableOpacity>
+    <>
+      <View
+        style={[
+          styles.container,
+          { display: blocksDisplay, flexDirection: order },
+        ]}
+        >
+        <TouchableOpacity
+          style={[styles.touch, { backgroundColor: qColor }]}
+          onPress={correctAnswer}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.touch, { backgroundColor: wrong }]}
-        onPress={incorrectAnswer}
-      >
-        <View style={styles.box} />
-      </TouchableOpacity>
-    </View>
-  );
-};
+        <TouchableOpacity
+          style={[styles.touch, { backgroundColor: wrong }]}
+          onPress={incorrectAnswer}
+        >
+          <View style={styles.box} />
+        </TouchableOpacity>
+      </View>
+
+
+      <View style={[styles.overContainer, { display: overDisplay }]}>
+        <Text style={[styles.text , { fontSize: 40, marginVertical: 30, fontStyle: 'bold' }]}>GREAT JOB SELENA!</Text> 
+        <Text style={[styles.text , { fontSize: 20 }]}>{ dt }</Text>
+        <Text style={[styles.text , { fontSize: 40 }]}>Amount of tries : { correct + incorrect }</Text>
+        <Text style={[styles.text , { fontSize: 20, marginVertical: 20 }]}>Previous scores:</Text>
+
+
+
+        <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+          <Image
+            source={require("../../assets/images/Bus.png")}
+            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150, }}
+          />
+        </TouchableOpacity>
+        
+      </View>
+    </>
+  );};
 
     const styles = StyleSheet.create({
       container: {
@@ -145,6 +178,17 @@ const QuizColors = () => {
         marginVertical: 50,
         marginHorizontal: 30,
       },
+
+      overContainer: {
+        backgroundColor: 'black',
+        alignItems: 'center',
+      },
+
+      text: {
+        color: 'white',
+
+      }
+      ,
     });
 
 
