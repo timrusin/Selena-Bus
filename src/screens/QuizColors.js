@@ -141,10 +141,10 @@ const QuizColors = ({ navigation }) => {
 
 
       <View style={[styles.overContainer, { display: overDisplay }]}>
-        <Text style={[styles.text , { fontSize: 40, marginVertical: 30, fontStyle: 'bold' }]}>GREAT JOB SELENA!</Text> 
+        <Text style={[styles.text , { fontSize: 40, marginVertical: 30 }]}>GREAT JOB SELENA!</Text> 
         <Text style={[styles.text , { fontSize: 20 }]}>{ dt }</Text>
         <Text style={[styles.text , { fontSize: 40 }]}>Amount of tries : { correct + incorrect }</Text>
-        <Text style={[styles.text , { fontSize: 20, marginVertical: 20 }]}>Previous scores:</Text>
+        <Text style={[styles.text , { fontSize: 20, marginVertical: 20 }]}>Previous Scores:</Text>
 
 
 

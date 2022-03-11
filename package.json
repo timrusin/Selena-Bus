@@ -32,5 +32,17 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
-  "private": true
+  "private": true,
+  "description": "Educational interactive game for my daughter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timrusin/Selena-Bus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timrusin/Selena-Bus/issues"
+  },
+  "homepage": "https://github.com/timrusin/Selena-Bus#readme"
 }
