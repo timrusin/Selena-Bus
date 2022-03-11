@@ -33,11 +33,14 @@ const QuizColors = () => {
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
-  //set another state for tracking the randomColor 
+  const [order, setOrder] = useState()
+
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
+  const arrangement = ["column", "column-reverse"]
   const qColor = colorsArray[increment]
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
+
   const [wrong, setWrong] = useState(getRandomColor);
 
 
@@ -48,6 +51,19 @@ const QuizColors = () => {
       Question(qColor)
     }, 1000)
   }, [increment]);
+
+  useEffect(()=>{
+    if (wrong === qColor){
+      setWrong("white")
+    }
+  },[wrong])
+
+  useEffect(()=> {
+    const pick = Math.floor(Math.random() * 2)
+      console.log(pick)
+    setOrder(arrangement[pick])
+  })
+
 
   //**** need useEffect that checks for duplicates
     
@@ -81,7 +97,7 @@ const QuizColors = () => {
   console.log("incorrect = " + incorrect);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {flexDirection: order } ]}>
       <TouchableOpacity
         style={[styles.touch, { backgroundColor: qColor }]}
         onPress={Correct}
@@ -103,7 +119,6 @@ const QuizColors = () => {
       container: {
         display: "flex",
         backgroundColor: "black",
-        flexDirection: "column",
         alignItems: "center",
       },
 
@@ -113,7 +128,7 @@ const QuizColors = () => {
         borderRadius: 20,
         marginVertical: 20,
       },
-
+      
       box: {
         width: 200,
         height: 200,
