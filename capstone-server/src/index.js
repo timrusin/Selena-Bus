@@ -5,7 +5,6 @@ const mongoose = require ('mongoose')
 const bodyParser = require('body-parser')
 const scoreRoutes = require('./routes/scoreRoutes')
 
-
 const app = express();
 
 app.use(bodyParser.json());

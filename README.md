@@ -16,12 +16,11 @@ I can imagine adding more levels, content, and ideas in the future.
 I would also hope to build this out even furtther, once it's deveolped more with Selena being the test case, so that users can be created and I can at least share it with friends and family that have new little ones in their lives as well. 
 
 ## Technologies used:
-- React Native
+- React-Native
 - Expo
-- JS
-- Django
-- Python
-- postgreSQL
+- Express 
+- Mongoose
+- MongoDB
 
 
 ## Wireframes

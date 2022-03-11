@@ -1,13 +1,9 @@
 
-// When game is over
-//- Audio plays "Good job Selena"
-//- display Total score component displaying the amount corect and incorrect
+
+// GAME OVER = create new component
 //- Data saves to backend with the following model:
-// date: 'string', - not sure how to auto generate this yet of course
-// correct: number
-//incorrect: number
-// Display previous scores bellow?
-//all of the previous game scores to view
+// "dt": string , "tries": number
+// Display previous scores bellow with an axios call of most recent five posts 
 
 //- COME BACK TO if time
 // - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished
@@ -19,12 +15,9 @@
 // - refactor all code with new variables
 // - add audio options
 
-
-
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity,StyleSheet, Text, Image } from "react-native";
 import { Audio } from "expo-av";
-
 
 const audioFiles = {
   red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
@@ -56,8 +49,6 @@ const QuizColors = ({ navigation }) => {
   
   const [wrong, setWrong] = useState(getRandomColor);
   const dt = Date()
-  console.log(dt)
-
 
   useEffect(() => {
     setWrong(getRandomColor)
@@ -79,14 +70,13 @@ const QuizColors = ({ navigation }) => {
     
   async function question(color) {
     console.log(increment);
-    const { sound } = await Audio.Sound.createAsync(audioFiles[color]); //calls the question color to be played
-    // setSound(sound);
+    const { sound } = await Audio.Sound.createAsync(audioFiles[color]); 
     await sound.playAsync();
   }
 
   async function correctAnswer() {
     if (increment === colorsArray.length - 1){
-      gameOver() //**** This needs to load the game over screen now */
+      gameOver()
     } else {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
     setSound(sound);
@@ -104,17 +94,13 @@ const QuizColors = ({ navigation }) => {
   }
 
   async function gameOver () {
-    console.log('game over')
+    console.log("game over");
     const { sound } = await Audio.Sound.createAsync(audioFiles["GameOver"]);
     setSound(sound);
     await sound.playAsync();
-
-    setBlocksDisplay('none')
-    setOverDisplay('flex')
+    setBlocksDisplay("none");
+    setOverDisplay("flex");
   }
-
-  console.log("correct = " + correct);
-  console.log("incorrect = " + incorrect);
 
   return (
     <>
@@ -123,7 +109,7 @@ const QuizColors = ({ navigation }) => {
           styles.container,
           { display: blocksDisplay, flexDirection: order },
         ]}
-        >
+      >
         <TouchableOpacity
           style={[styles.touch, { backgroundColor: qColor }]}
           onPress={correctAnswer}
@@ -139,25 +125,31 @@ const QuizColors = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-
       <View style={[styles.overContainer, { display: overDisplay }]}>
-        <Text style={[styles.text , { fontSize: 40, marginVertical: 30 }]}>GREAT JOB SELENA!</Text> 
-        <Text style={[styles.text , { fontSize: 20 }]}>{ dt }</Text>
-        <Text style={[styles.text , { fontSize: 40 }]}>Amount of tries : { correct + incorrect }</Text>
-        <Text style={[styles.text , { fontSize: 20, marginVertical: 20 }]}>Previous Scores:</Text>
+        <Text style={[styles.text, { fontSize: 40, marginVertical: 30 }]}>
+          GREAT JOB SELENA!
+        </Text>
+        <Text style={[styles.text, { fontSize: 20 }]}>{dt}</Text>
+        <Text style={[styles.text, { fontSize: 40 }]}>
+          Amount of tries : {correct + incorrect}
+        </Text>
+        <Text style={[styles.text, { fontSize: 20, marginVertical: 20 }]}>
+          Previous Scores:
+        </Text>
 
-
+        {/* add scores component here passing dt and a new variable that is correct+incorrect
+        scores component should also GET data from the DB, I'm thinking most recent five.  */}
 
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
             source={require("../../assets/images/Bus.png")}
-            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150, }}
+            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150 }}
           />
         </TouchableOpacity>
-        
       </View>
     </>
-  );};
+  );}
+
 
     const styles = StyleSheet.create({
       container: {
@@ -186,9 +178,7 @@ const QuizColors = ({ navigation }) => {
 
       text: {
         color: 'white',
-
-      }
-      ,
+      },
     });
 
 
