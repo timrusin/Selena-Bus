@@ -6,9 +6,19 @@
 // date: 'string', - not sure how to auto generate this yet of course
 // correct: number
 //incorrect: number
-
-// Have a button that says previous scores that takes us to a new screen pulling
+// Display previous scores bellow?
 //all of the previous game scores to view
+
+//- COME BACK TO if time
+// - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished
+
+//EXTRA THINGS TO DO FIX UP
+// - play around wiht music on intro, menu, and "touch" screens. If workable record some custom music for the app
+// - Resisize images in PS on other computer
+// - create and save variables for colors and images in constant.js file
+// - refactor all code with new variables
+
+
 
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity,StyleSheet } from "react-native";
@@ -40,17 +50,16 @@ const QuizColors = () => {
 
   const [wrong, setWrong] = useState(getRandomColor);
 
-  useEffect(() => { //incrementing 
-    console.log("inside useEffect " + qColor);
+  useEffect(() => {
     setWrong(getRandomColor)
     setTimeout(()=>{
-      Question(qColor)
+      question(qColor)
     }, 1000)
   }, [increment]);
 
   useEffect(()=>{
     if (wrong === qColor){
-      setWrong("white")
+      setWrong("grey")
     }
   },[wrong])
 
@@ -59,16 +68,16 @@ const QuizColors = () => {
     setOrder(arrangement[pick])
   })
     
-  async function Question(color) {
+  async function question(color) {
     console.log(increment);
     const { sound } = await Audio.Sound.createAsync(audioFiles[color]); //calls the question color to be played
     // setSound(sound);
     await sound.playAsync();
   }
 
-  async function Correct() {
+  async function correctAnswer() {
     if (increment === colorsArray.length - 1){
-      return console.log("The end") //**** This needs to load the game over screen now */
+      gameOver() //**** This needs to load the game over screen now */
     } else {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
     setSound(sound);
@@ -78,7 +87,7 @@ const QuizColors = () => {
   }
 }
 
-  async function Incorrect() {
+  async function incorrectAnswer() {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Incorrect"]);
     setSound(sound);
     await sound.playAsync();
@@ -92,14 +101,14 @@ const QuizColors = () => {
     <View style={[styles.container, {flexDirection: order } ]}>
       <TouchableOpacity
         style={[styles.touch, { backgroundColor: qColor }]}
-        onPress={Correct}
+        onPress={correctAnswer}
       >
         <View style={styles.box} />
       </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.touch, { backgroundColor: wrong }]}
-        onPress={Incorrect}
+        onPress={incorrectAnswer}
       >
         <View style={styles.box} />
       </TouchableOpacity>
