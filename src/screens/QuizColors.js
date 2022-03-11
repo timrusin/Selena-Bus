@@ -40,8 +40,10 @@ const QuizColors = () => {
   const getRandomColor = colorsArray[randomNumber];
   const [wrong, setWrong] = useState(getRandomColor);
 
+
   useEffect(() => { //incrementing 
     console.log("inside useEffect " + qColor);
+    setWrong(getRandomColor)
     setTimeout(()=>{
       Question(qColor)
     }, 1000)
@@ -54,6 +56,7 @@ const QuizColors = () => {
     const { sound } = await Audio.Sound.createAsync(audioFiles[color]); //calls the question color to be played
     // setSound(sound);
     await sound.playAsync();
+    
   }
 
   async function Correct() {
@@ -72,7 +75,6 @@ const QuizColors = () => {
     setSound(sound);
     await sound.playAsync();
     setIncorrect(incorrect + 1);
-    setWrong(getRandomColor)
   }
 
   console.log("correct = " + correct);
@@ -88,7 +90,7 @@ const QuizColors = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.touch, { backgroundColor: getRandomColor }]}
+        style={[styles.touch, { backgroundColor: wrong }]}
         onPress={Incorrect}
       >
         <View style={styles.box} />
