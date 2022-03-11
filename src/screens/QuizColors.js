@@ -34,6 +34,8 @@ const audioFiles = {
   Correct: require("../../assets/sounds/shared/Correct.m4a"),
   Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
 };
+const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
+const arrangement = ["column", "column-reverse"]
 
 const QuizColors = () => {
   const [sound, setSound] = useState();
@@ -41,9 +43,8 @@ const QuizColors = () => {
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [order, setOrder] = useState()
+  const [blocksDisplay, setBlocksDisplay] = useState('flex')
 
-  const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
-  const arrangement = ["column", "column-reverse"]
   const qColor = colorsArray[increment]
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
@@ -94,11 +95,20 @@ const QuizColors = () => {
     setIncorrect(incorrect + 1);
   }
 
+  async function gameOver () {
+    console.log('game over')
+    const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
+    setSound(sound);
+    await sound.playAsync();
+
+    setBlocksDisplay('none')
+  }
+
   console.log("correct = " + correct);
   console.log("incorrect = " + incorrect);
 
   return (
-    <View style={[styles.container, {flexDirection: order } ]}>
+    <View style={[styles.container, {display: blocksDisplay, flexDirection: order } ]}>
       <TouchableOpacity
         style={[styles.touch, { backgroundColor: qColor }]}
         onPress={correctAnswer}
@@ -118,7 +128,6 @@ const QuizColors = () => {
 
     const styles = StyleSheet.create({
       container: {
-        display: "flex",
         backgroundColor: "black",
         alignItems: "center",
       },
