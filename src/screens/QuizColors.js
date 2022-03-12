@@ -126,8 +126,13 @@ const QuizColors = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-        <GameOverComponent navigation={ navigation } style={{ display: overDisplay }} dt={ dt } tries={ correct+incorrect } />
-  
+        <GameOverComponent
+          navigation={navigation}
+          style={{ display: overDisplay }}
+          dt={dt}
+          tries={correct + incorrect}
+        />
+      
     </>
   );}
 
@@ -149,6 +154,15 @@ const QuizColors = ({ navigation }) => {
         height: 200,
         marginVertical: 50,
         marginHorizontal: 30,
+      },
+
+      overContainer: {
+        backgroundColor: 'black',
+        alignItems: 'center',
+      },
+  
+      text: {
+        color: 'white',
       },
     });
 
