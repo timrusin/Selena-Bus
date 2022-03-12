@@ -4,31 +4,27 @@ const Score = mongoose.model('Score');
 
 const router = express.Router();
 
-router.post("/newcolorscore", async (req, res) => {
-  const { game, dt, tries } = req.body;
-  
-  const score = new Score({ game, dt, tries });
-  await score.save();
-  
-  res.send("you made a color post request");
+router.get("/", async (req, res, next) => {
+  try {
+    const scores = await Score.find({});
+    res.json(scores);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.post("/newnumberscore", async (req, res) => {
+router.post("/newscore", async (req, res) => {
   const { game, dt, tries } = req.body;
   
+try{
   const score = new Score({ game, dt, tries });
   await score.save();
   
-  res.send("you made a number post request");
+  res.send("you made a score post request");
+} catch (err) {
+  res.status(422).send(err.message);
+}
 });
 
-router.post("/newletterscore", async (req, res) => {
-  const { game, dt, tries } = req.body;
-  
-  const score = new Score({ game, dt, tries });
-  await score.save();
-  
-  res.send("you made a letter post request");
-});
 
 module.exports = router;
