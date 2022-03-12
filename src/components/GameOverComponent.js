@@ -41,6 +41,7 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
 
       <View style={styles.overContainer}>
         <FlatList
+        keyExtractor={(score)=>score._id }
           data={scores}
           renderItem={({ item }) => {
             return (
