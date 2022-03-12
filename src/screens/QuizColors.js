@@ -18,6 +18,7 @@
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity,StyleSheet, Text, Image } from "react-native";
 import { Audio } from "expo-av";
+import GameOverComponent from "../components/GameOverComponent";
 
 const audioFiles = {
   red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
@@ -125,31 +126,10 @@ const QuizColors = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.overContainer, { display: overDisplay }]}>
-        <Text style={[styles.text, { fontSize: 40, marginVertical: 30 }]}>
-          GREAT JOB SELENA!
-        </Text>
-        <Text style={[styles.text, { fontSize: 20 }]}>{dt}</Text>
-        <Text style={[styles.text, { fontSize: 40 }]}>
-          Amount of tries : {correct + incorrect}
-        </Text>
-        <Text style={[styles.text, { fontSize: 20, marginVertical: 20 }]}>
-          Previous Scores:
-        </Text>
-
-        {/* add scores component here passing dt and a new variable that is correct+incorrect
-        scores component should also GET data from the DB, I'm thinking most recent five.  */}
-
-        <TouchableOpacity onPress={() => navigation.navigate("Main")}>
-          <Image
-            source={require("../../assets/images/Bus.png")}
-            style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150 }}
-          />
-        </TouchableOpacity>
-      </View>
+        <GameOverComponent navigation={ navigation } style={{ display: overDisplay }} dt={ dt } tries={ correct+incorrect } />
+  
     </>
   );}
-
 
     const styles = StyleSheet.create({
       container: {
@@ -169,15 +149,6 @@ const QuizColors = ({ navigation }) => {
         height: 200,
         marginVertical: 50,
         marginHorizontal: 30,
-      },
-
-      overContainer: {
-        backgroundColor: 'black',
-        alignItems: 'center',
-      },
-
-      text: {
-        color: 'white',
       },
     });
 
