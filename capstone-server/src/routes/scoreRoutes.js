@@ -15,7 +15,6 @@ router.get("/", async (req, res, next) => {
 
 router.post("/newscore", async (req, res) => {
   const { game, dt, tries } = req.body;
-  
 try{
   const score = new Score({ game, dt, tries });
   await score.save();
@@ -25,6 +24,5 @@ try{
   res.status(422).send(err.message);
 }
 });
-
 
 module.exports = router;

@@ -18,6 +18,7 @@
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity,StyleSheet, Text, Image } from "react-native";
 import { Audio } from "expo-av";
+import axios from 'axios'
 import GameOverComponent from "../components/GameOverComponent";
 
 const audioFiles = {
@@ -48,21 +49,21 @@ const QuizColors = ({ navigation }) => {
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
   
-  const [wrong, setWrong] = useState(getRandomColor);
+  const [wrongBox, setWrongBox] = useState(getRandomColor);
   const dt = Date()
 
   useEffect(() => {
-    setWrong(getRandomColor)
+    setWrongBox(getRandomColor)
     setTimeout(()=>{
       question(qColor)
     }, 1000)
   }, [increment]);
 
   useEffect(()=>{
-    if (wrong === qColor){
-      setWrong("grey")
+    if (wrongBox === qColor){
+      setWrongBox("grey")
     }
-  },[wrong])
+  },[wrongBox])
 
   useEffect(()=> {
     const pick = Math.floor(Math.random() * 2)
@@ -95,7 +96,7 @@ const QuizColors = ({ navigation }) => {
   }
 
   async function gameOver () {
-    console.log("game over");
+    axios.post('http:localhost:3000/newscore', { game: 'Colors Quiz', dt: dt, tries: correct+incorrect });
     const { sound } = await Audio.Sound.createAsync(audioFiles["GameOver"]);
     setSound(sound);
     await sound.playAsync();
@@ -119,7 +120,7 @@ const QuizColors = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.touch, { backgroundColor: wrong }]}
+          style={[styles.touch, { backgroundColor: wrongBox }]}
           onPress={incorrectAnswer}
         >
           <View style={styles.box} />

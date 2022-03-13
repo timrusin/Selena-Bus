@@ -8,20 +8,15 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
     const [scores, setScores] =useState()
 
     useEffect(()=>{
-    axios.get('http:localhost:3000/' ,{
-      params: {
-        _limit: 2
-       }
-    })
+    axios.get('http:localhost:3000/?_limit=4')
         .then(res=>{
         setScores(res.data)
         })
     },[])
-    console.log(scores)
     
-    useEffect(()=>{
-      axios.post('http:localhost:3000/newscore', { game: game, dt: dt, tries: tries })
-    },[])
+    // useEffect(()=>{
+    //   axios.post('http:localhost:3000/newscore', { game: game, dt: dt, tries: tries })
+    // },[])
 
   return (
     <>
@@ -37,7 +32,7 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
             { dt }
           </Text>
           <Text style={[styles.text, { fontSize: 40, marginBottom: 20 }]}>
-            Amount of tries : {tries}
+            Amount of Tries : {tries}
           </Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
@@ -55,7 +50,7 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
       <View style={styles.overContainer}>
         <FlatList
           keyExtractor={(score) => score._id}
-          data={revScores}
+          data={scores}
           renderItem={({ item }) => {
             return (
               <View>
