@@ -2,8 +2,6 @@ import { React, useState, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import axios from 'axios'
 
-
-
 const GameOverComponent = ({ navigation, dt, tries, game }) => {
     const [scores, setScores] =useState()
 
@@ -14,10 +12,6 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
         })
     },[])
     
-    // useEffect(()=>{
-    //   axios.post('http:localhost:3000/newscore', { game: game, dt: dt, tries: tries })
-    // },[])
-
   return (
     <>
       <View style={styles.overContainer}>
@@ -47,20 +41,19 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
       </View>
 
       
-      <View style={styles.overContainer}>
+      <View>
         <FlatList
           keyExtractor={(score) => score._id}
           data={scores}
           renderItem={({ item }) => {
             return (
-              <View>
+              <View style={styles.overContainer}>
                 <Text style={[styles.text, { fontSize: 15 }]}>
-                  {" "}
-                  {item.game}{" "}
+                  { item.game }
                 </Text>
                 <Text style={[styles.text, { fontSize: 15 }]}> {item.dt} </Text>
                 <Text style={[styles.text, { fontSize: 25, marginBottom: 10 }]}>
-                  Amount of tries : {item.tries}
+                  Amount of Tries : {item.tries}
                 </Text>
               </View>
             );
