@@ -129,6 +129,7 @@ const QuizColors = ({ navigation }) => {
         <GameOverComponent
           navigation={navigation}
           style={{ display: overDisplay }}
+          game= {"Colors Quiz"}
           dt={dt}
           tries={correct + incorrect}
         />

@@ -8,41 +8,54 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
     const [scores, setScores] =useState()
 
     useEffect(()=>{
-    axios.get('http:localhost:3000/')
+    axios.get('http:localhost:3000/' ,{
+      params: {
+        _limit: 2
+       }
+    })
         .then(res=>{
         setScores(res.data)
         })
     },[])
-    if (!scores) return (
-        <Text>loading.....</Text>
-    )
+    console.log(scores)
+    
+    useEffect(()=>{
+      axios.post('http:localhost:3000/newscore', { game: game, dt: dt, tries: tries })
+    },[])
+
   return (
     <>
       <View style={styles.overContainer}>
-        <Text style={[styles.text, { fontSize: 40, marginVertical: 10 }]}>
-          GREAT JOB SELENA!
-        </Text>
-        <Text style={[styles.text, { fontSize: 15, marginVertical: 10 }]}>
-          { dt }
-        </Text>
-        <Text style={[styles.text, { fontSize: 40 }]}>
-          Amount of tries : { tries }
-        </Text>
+        <View style={styles.resultsContainer}>
+          <Text style={[styles.text, { fontSize: 40, marginTop: 20 }]}>
+            GREAT JOB SELENA!
+          </Text>
+          <Text style={[styles.text, { fontSize: 30, marginTop: 10 }]}>
+            { game }
+          </Text>
+          <Text style={[styles.text, { fontSize: 18, marginVertical: 10 }]}>
+            { dt }
+          </Text>
+          <Text style={[styles.text, { fontSize: 40, marginBottom: 20 }]}>
+            Amount of tries : {tries}
+          </Text>
+        </View>
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
             source={require("../../assets/images/Bus.png")}
-            style={{ height: 90, width: 130, marginTop: 20, marginBottom: 50 }}
+            style={{ height: 90, width: 130, marginTop: 20, marginBottom: 10 }}
           />
         </TouchableOpacity>
-        <Text style={[styles.text, { fontSize: 20, marginVertical: 20 }]}>
+        <Text style={[styles.text, { fontSize: 25, marginVertical: 10 }]}>
           Previous Scores:
         </Text>
       </View>
 
+      
       <View style={styles.overContainer}>
         <FlatList
-        keyExtractor={(score)=>score._id }
-          data={scores}
+          keyExtractor={(score) => score._id}
+          data={revScores}
           renderItem={({ item }) => {
             return (
               <View>
@@ -67,6 +80,14 @@ const styles = StyleSheet.create({
     overContainer: {
       backgroundColor: 'black',
       alignItems: 'center',
+    },
+
+    resultsContainer: {
+      borderColor: 'white', 
+      borderWidth: 2, 
+      alignItems: 'center', 
+      paddingHorizontal: 8,
+      marginTop: 20,
     },
 
     text: {
