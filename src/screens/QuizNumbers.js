@@ -1,17 +1,3 @@
-// = getting music to stop 
-// - decide on and finish mode design page
-// - Better font for Home page - curve?
-
-//- COME BACK TO if time
-// - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished (look up onend)
-
-//EXTRA THINGS TO DO FIX UP
-// - Resisize images in PS on other computer
-// - play around with music on intro, menu, and "touch" screens. If workable record some custom music for the app
-// - create and save variables for colors and images in constant.js file
-// - refactor all code with new variables
-// - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'
-
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
 import { Audio } from "expo-av";
@@ -19,18 +5,22 @@ import axios from "axios";
 import GameOverComponent from "../components/GameOverComponent";
 
 const audioFiles = {
-  red: require("../../assets/sounds/quiz_color/QuizRed.m4a"),
-  blue: require("../../assets/sounds/quiz_color/QuizBlue.m4a"),
-  green: require("../../assets/sounds/quiz_color/QuizGreen.m4a"),
-  purple: require("../../assets/sounds/quiz_color/QuizPurple.m4a"),
-  yellow: require("../../assets/sounds/quiz_color/QuizYellow.m4a"),
-  orange: require("../../assets/sounds/quiz_color/QuizOrange.m4a"),
+  1: require("../../assets/sounds/quiz_number/QuizOne.m4a"),
+  2: require("../../assets/sounds/quiz_number/QuizTwo.m4a"),
+  3: require("../../assets/sounds/quiz_number/QuizThree.m4a"),
+  4: require("../../assets/sounds/quiz_number/QuizFour.m4a"),
+  5: require("../../assets/sounds/quiz_number/QuizFive.m4a"),
+  6: require("../../assets/sounds/quiz_number/QuizSix.m4a"),
+  7: require("../../assets/sounds/quiz_number/QuizSeven.m4a"),
+  8: require("../../assets/sounds/quiz_number/QuizEight.m4a"),
+  9: require("../../assets/sounds/quiz_number/QuizNine.m4a"),
+  10: require("../../assets/sounds/quiz_number/QuizTen.m4a"),
   Correct: require("../../assets/sounds/shared/Correct.m4a"),
   Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
   GameOver: require("../../assets/sounds/shared/GameOver.m4a"),
 };
 
-const QuizColors = ({ navigation }) => {
+const QuizNumbers = ({ navigation }) => {
   const [sound, setSound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
@@ -39,29 +29,29 @@ const QuizColors = ({ navigation }) => {
   const [blocksDisplay, setBlocksDisplay] = useState("flex");
   const [overDisplay, setOverDisplay] = useState("none");
 
-  const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
+  const numbersArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const arrangement = ["column", "column-reverse"];
-  const qColor = colorsArray[increment];
+  const qNumber = numbersArray[increment];
   const randomIndex = Math.floor(Math.random() * 6);
-  const getRandomColor = colorsArray[randomIndex];
+  const getRandomNumber = numbersArray[randomIndex];
 
-  const [wrongBox, setWrongBox] = useState(getRandomColor);
+  const [wrongBox, setWrongBox] = useState(getRandomNumber);
   const dt = Date();
 
   useEffect(() => {
-    setWrongBox(getRandomColor);
+    setWrongBox(getRandomNumber);
     setTimeout(() => {
-      question(qColor);
+      question(qNumber);
     }, 1000);
   }, [increment]);
 
   //Checking for duplicate colors
   useEffect(() => {
-    if (wrongBox === qColor) {
-      setWrongBox(colorsArray[increment + 1]);
+    if (wrongBox === qNumber) {
+      setWrongBox(numbersArray[increment + 1]);
     }
-    if (wrongBox === colorsArray[5]) {
-      setWrongBox(colorsArray[increment - 1]);
+    if (wrongBox === numbersArray[5]) {
+      setWrongBox(numbersArray[increment - 1]);
     }
   }, [wrongBox]);
 
@@ -72,14 +62,14 @@ const QuizColors = ({ navigation }) => {
   });
 
   //calls the question audio from first useEffect
-  async function question(color) {
-    const { sound } = await Audio.Sound.createAsync(audioFiles[color]);
+  async function question(number) {
+    const { sound } = await Audio.Sound.createAsync(audioFiles[number]);
     await sound.playAsync();
   }
 
   //If the user chooses the correct color
   async function correctAnswer() {
-    if (increment === colorsArray.length - 1) {
+    if (increment === numbersArray.length - 1) {
       gameOver();
     } else {
       const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
@@ -101,7 +91,7 @@ const QuizColors = ({ navigation }) => {
   //If the game is over
   async function gameOver() {
     axios.post("http:localhost:3000/newscore", {
-      game: "Colors Quiz",
+      game: "Numbers Quiz",
       dt: dt,
       tries: correct + incorrect,
     });
@@ -121,24 +111,28 @@ const QuizColors = ({ navigation }) => {
         ]}
       >
         <TouchableOpacity
-          style={[styles.touch, { backgroundColor: qColor }]}
+          style={styles.touch}
           onPress={correctAnswer}
         >
-          <View style={styles.box} />
+          <View style={styles.box}>
+              <Text style={styles.text}>{ qNumber }</Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.touch, { backgroundColor: wrongBox }]}
+          style={styles.touch}
           onPress={incorrectAnswer}
         >
-          <View style={styles.box} />
+          <View style={styles.box}>
+              <Text style={styles.text}>{ wrongBox }</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
       <GameOverComponent
         navigation={navigation}
         style={{ display: overDisplay }}
-        game={"Colors Quiz"}
+        game={"Numbers Quiz"}
         dt={dt}
         tries={correct + incorrect}
       />
@@ -158,6 +152,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 40,
   },
+  
+  text: {
+    color: 'white',
+    fontSize: 200,
+    alignSelf: 'center',
+    textShadowColor: 'white',
+    textShadowRadius: 10,
+  },
 
   box: {
     width: 200,
@@ -170,10 +172,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     alignItems: "center",
   },
-
-  text: {
-    color: "white",
-  },
 });
 
-export default QuizColors;
+export default QuizNumbers;

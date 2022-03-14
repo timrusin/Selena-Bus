@@ -4,23 +4,21 @@ import { View } from 'react-native'
 
 
 const ColorsMenu = ({navigation}) => {
-
+const image1 = require('../../../assets/images/animatedGifs/colorsPractice.gif')
+const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
     return (
       <View>
         <ModeComponent
           navigation={navigation}
-          link="ListenColors"
-          title="Listen"
-        />
-        <ModeComponent
-          navigation={navigation}
           link="TouchColors"
-          title="Play"
+          title="Practice"
+          image={ image1 }
         />
         <ModeComponent
           navigation={navigation}
           link="QuizColors"
-          title="Test"
+          title="Quiz"
+          image={ image2 }
         />
       </View>
     );

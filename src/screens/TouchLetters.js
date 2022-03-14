@@ -71,9 +71,9 @@ const TouchLetters = ({ navigation }) => {
               height: 90,
               width: 130,
               marginHorizontal: 100,
-              marginVertical: 10,
+              marginVertical: 50,
               marginBottom: 60,
-            }}
+            }} 
           />
         </TouchableOpacity>
       </View>

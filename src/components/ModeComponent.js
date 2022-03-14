@@ -1,13 +1,12 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { withNavigation } from 'react-navigation'
 
-
-const ModeComponent = ({navigation, link, title}) => {
+const ModeComponent = ({navigation, link, title, image}) => {
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate(link)}>
+        <Image source={image} style={styles.images} />
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -19,19 +18,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: "center",
     justifyContent: 'space-between',
-    backgroundColor: "purple",
+    backgroundColor: "black",
   },
 
   images: {
-    width: 170,
-    height: 180,
-    marginTop: 30,
+    width: 177,
+    height: 275,
+    marginTop: 40,
   },
 
   title: {
-    marginVertical: 80,
-    fontSize: 80,
-    marginVertical: 80,
+    color: 'white',
+    marginBottom:30,
+    fontSize: 30,
+    textAlign: 'center',
+
   },
 });
 

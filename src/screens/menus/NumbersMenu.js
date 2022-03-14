@@ -5,22 +5,21 @@ import { View } from 'react-native'
 
 
 const NumbersMenu = ({navigation}) => {
+const image1 = require('../../../assets/images/animatedGifs/numbersPractice.gif')
+const image2 = require('../../../assets/images/animatedGifs/numbersQuiz.gif')
     return (
       <View>
         <ModeComponent
           navigation={navigation}
-          link="ListenNumbers"
-          title="Listen"
-        />
-        <ModeComponent
-          navigation={navigation}
           link="TouchNumbers"
-          title="Play"
+          title="Practice"
+          image={ image1 }
         />
         <ModeComponent
           navigation={navigation}
-          link="TestNumbers"
-          title="Test"
+          link="QuizNumbers"
+          title="Quiz"
+          image={ image2 }
         />
       </View>
     );
