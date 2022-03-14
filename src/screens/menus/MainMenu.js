@@ -1,8 +1,20 @@
-import React from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
+import { React, useState, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Audio } from "expo-av";
 
 
-const MainMenu = ({navigation}) => {
+const MainMenu = ({ navigation }) => {
+  
+  useEffect(() => {
+    Music();
+  }, []);
+  
+  async function Music () {
+    const music = require("../../../assets/sounds/music/MenuMusic.mp3")
+    const { sound } = await Audio.Sound.createAsync(music); 
+    await sound.playAsync();
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("Colors")}>

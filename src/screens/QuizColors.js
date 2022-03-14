@@ -1,19 +1,17 @@
 
-
-// GAME OVER = create new component
-//- Data saves to backend with the following model:
-// "dt": string , "tries": number
-// Display previous scores bellow with an axios call of most recent five posts 
+// - decide on and finish mode design page
+// - Better font for Home page
 
 //- COME BACK TO if time
-// - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished
+// - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished (look up onend)
 
 //EXTRA THINGS TO DO FIX UP
-// - play around wiht music on intro, menu, and "touch" screens. If workable record some custom music for the app
 // - Resisize images in PS on other computer
+// - play around with music on intro, menu, and "touch" screens. If workable record some custom music for the app
 // - create and save variables for colors and images in constant.js file
 // - refactor all code with new variables
-// - add audio options
+// - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'
+
 
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity,StyleSheet, Text, Image } from "react-native";
@@ -58,42 +56,50 @@ const QuizColors = ({ navigation }) => {
     }, 1000)
   }, [increment]);
 
+  //Checking for duplicate colors
   useEffect(()=>{
     if (wrongBox === qColor){
-      setWrongBox("grey")
+      setWrongBox(colorsArray[increment + 1])
+    }
+    if (wrongBox === colorsArray[5]) {
+      setWrongBox(colorsArray[increment - 1]);
     }
   },[wrongBox])
-
+  
+  //randomly arranging the boxes order
   useEffect(()=> {
     const pick = Math.floor(Math.random() * 2)
     setOrder(arrangement[pick])
   })
-    
+  
+  //calls the question audio from first useEffect
   async function question(color) {
-    console.log(increment);
     const { sound } = await Audio.Sound.createAsync(audioFiles[color]); 
     await sound.playAsync();
   }
-
+  
+  //If the user chooses the correct color
   async function correctAnswer() {
     if (increment === colorsArray.length - 1){
       gameOver()
     } else {
-    const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
-    setSound(sound);
-    await sound.playAsync();
-    setIncrement( increment + 1)
-    setCorrect(correct + 1);
+      const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
+      setSound(sound);
+      await sound.playAsync();
+      setIncrement( increment + 1)
+      setCorrect(correct + 1);
+    }
   }
-}
-
+  
+  //If the user chooses the incorrect answer
   async function incorrectAnswer() {
     const { sound } = await Audio.Sound.createAsync(audioFiles["Incorrect"]);
     setSound(sound);
     await sound.playAsync();
     setIncorrect(incorrect + 1);
   }
-
+  
+  //If the game is over
   async function gameOver () {
     axios.post('http:localhost:3000/newscore', { game: 'Colors Quiz', dt: dt, tries: correct+incorrect });
     const { sound } = await Audio.Sound.createAsync(audioFiles["GameOver"]);
@@ -102,7 +108,6 @@ const QuizColors = ({ navigation }) => {
     setBlocksDisplay("none");
     setOverDisplay("flex");
   }
-
   return (
     <>
       <View

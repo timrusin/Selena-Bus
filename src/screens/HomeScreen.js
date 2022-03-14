@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-
 const HomeScreen = ({navigation}) => {
 
   return (
@@ -32,11 +31,13 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 310,
+    width: 315,
     height: 230,
-    marginBottom: 150
+    marginBottom: 150,
+    shadowColor: 'white',
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
-
 
   buttonStyle: {
     borderWidth: 3,
