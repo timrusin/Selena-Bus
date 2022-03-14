@@ -13,13 +13,13 @@ const LettersMenu = ({ navigation }) => {
             navigation={navigation}
             link="TouchLetters"
             title="Practice"
-            image={ image1 }
+            image={image1}
           />
           <ModeComponent
             navigation={navigation}
             link="QuizLetters"
             title="Quiz"
-            image={ image2 }
+            image={image2}
           />
         </View>
       );

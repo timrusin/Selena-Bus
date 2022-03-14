@@ -15,9 +15,16 @@ const HomeScreen = ({navigation}) => {
   }
   return (
     <View style={styles.container}>
-      <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={styles.title}>Selena's Bus</Animatable.Text>
+      <Animatable.Text
+        animation="pulse"
+        easing="ease-out"
+        iterationCount="infinite"
+        style={styles.title}
+      >
+        Selena's Bus
+      </Animatable.Text>
 
-      <Text ></Text>
+      <Text></Text>
       <TouchableOpacity onPress={() => navigation.navigate("Main")}>
         <Image
           source={require("../../assets/images/BusLarge.png")}
@@ -38,6 +45,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 65,
     color: 'white',
+    textShadowColor: 'white',
+    textShadowRadius: 2,
     marginTop: 100,
     marginBottom: 80,
 
@@ -49,7 +58,7 @@ const styles = StyleSheet.create({
     marginBottom: 150,
     shadowColor: 'white',
     shadowOpacity: 1,
-    shadowRadius: 5,
+    shadowRadius: 2,
   },
 
   buttonStyle: {

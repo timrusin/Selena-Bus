@@ -2,7 +2,6 @@ import { React, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Audio } from 'expo-av'
 
-
 const TouchLetters = ({ navigation }) => {
     const [sound, setSound] = useState()
 

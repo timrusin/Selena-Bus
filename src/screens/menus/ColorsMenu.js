@@ -12,13 +12,13 @@ const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
           navigation={navigation}
           link="TouchColors"
           title="Practice"
-          image={ image1 }
+          image={image1}
         />
         <ModeComponent
           navigation={navigation}
           link="QuizColors"
           title="Quiz"
-          image={ image2 }
+          image={image2}
         />
       </View>
     );
