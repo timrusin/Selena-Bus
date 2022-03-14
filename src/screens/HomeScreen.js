@@ -1,9 +1,18 @@
 import { useEffect, React } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { Audio } from "expo-av";
 
 const HomeScreen = ({navigation}) => {
-
+  useEffect(() => {
+    BusSounds();
+  },[]);
+  
+  async function BusSounds () {
+    const music = require("../../assets/sounds/sfx/BusSounds.wav")
+    const { sound } = await Audio.Sound.createAsync(music); 
+    await sound.playAsync();
+  }
   return (
     <View style={styles.container}>
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={styles.title}>Selena's Bus</Animatable.Text>
@@ -16,7 +25,7 @@ const HomeScreen = ({navigation}) => {
         ></Image>
       </TouchableOpacity>
     </View>
-  );
+  );   
 };
 
 const styles = StyleSheet.create({
