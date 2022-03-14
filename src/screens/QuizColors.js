@@ -13,7 +13,7 @@
 // - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'
 
 import { useState, useEffect } from "react";
-import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { Audio } from "expo-av";
 import axios from "axios";
 import GameOverComponent from "../components/GameOverComponent";
@@ -87,6 +87,7 @@ const QuizColors = ({ navigation }) => {
       await sound.playAsync();
       setIncrement(increment + 1);
       setCorrect(correct + 1);
+      console.log(correct)
     }
   }
 
@@ -96,6 +97,7 @@ const QuizColors = ({ navigation }) => {
     setSound(sound);
     await sound.playAsync();
     setIncorrect(incorrect + 1);
+    console.log(incorrect)
   }
 
   //If the game is over
@@ -140,7 +142,7 @@ const QuizColors = ({ navigation }) => {
         style={{ display: overDisplay }}
         game={"Colors Quiz"}
         dt={dt}
-        tries={correct + incorrect}
+        tries={ correct + incorrect }
       />
     </>
   );

@@ -10,6 +10,7 @@ import TouchNumbers from "./src/screens/TouchNumbers";
 import TouchLetters from "./src/screens/TouchLetters";
 import QuizColors from "./src/screens/QuizColors";
 import QuizNumbers from "./src/screens/QuizNumbers";
+import QuizLetters from "./src/screens/QuizLetters";
 
 const navigator = createStackNavigator(
   {
@@ -23,6 +24,7 @@ const navigator = createStackNavigator(
     TouchLetters: TouchLetters,
     QuizColors: QuizColors,
     QuizNumbers: QuizNumbers,
+    QuizLetters: QuizLetters,
   },
   {
     initialRouteName: "Home",

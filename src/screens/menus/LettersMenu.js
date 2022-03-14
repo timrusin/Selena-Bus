@@ -6,7 +6,7 @@ import ModeComponent from '../../components/ModeComponent';
 
 const LettersMenu = ({ navigation }) => {
   const image1 = require('../../../assets/images/animatedGifs/lettersPractice.gif')
-  const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
+  const image2 = require('../../../assets/images/animatedGifs/lettersQuiz.gif')
       return (
         <View>
           <ModeComponent
@@ -17,7 +17,7 @@ const LettersMenu = ({ navigation }) => {
           />
           <ModeComponent
             navigation={navigation}
-            link="TestLetters"
+            link="QuizLetters"
             title="Quiz"
             image={ image2 }
           />

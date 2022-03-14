@@ -5,22 +5,19 @@ import axios from "axios";
 import GameOverComponent from "../components/GameOverComponent";
 
 const audioFiles = {
-  1: require("../../assets/sounds/quiz_number/QuizOne.m4a"),
-  2: require("../../assets/sounds/quiz_number/QuizTwo.m4a"),
-  3: require("../../assets/sounds/quiz_number/QuizThree.m4a"),
-  4: require("../../assets/sounds/quiz_number/QuizFour.m4a"),
-  5: require("../../assets/sounds/quiz_number/QuizFive.m4a"),
-  6: require("../../assets/sounds/quiz_number/QuizSix.m4a"),
-  7: require("../../assets/sounds/quiz_number/QuizSeven.m4a"),
-  8: require("../../assets/sounds/quiz_number/QuizEight.m4a"),
-  9: require("../../assets/sounds/quiz_number/QuizNine.m4a"),
-  10: require("../../assets/sounds/quiz_number/QuizTen.m4a"),
+  A: require("../../assets/sounds/quiz_letter/QuizA.m4a"),
+  B: require("../../assets/sounds/quiz_letter/QuizB.m4a"),
+  C: require("../../assets/sounds/quiz_letter/QuizC.m4a"),
+  D: require("../../assets/sounds/quiz_letter/QuizD.m4a"),
+  E: require("../../assets/sounds/quiz_letter/QuizE.m4a"),
+  F: require("../../assets/sounds/quiz_letter/QuizF.m4a"),
+  G: require("../../assets/sounds/quiz_letter/QuizG.m4a"),
   Correct: require("../../assets/sounds/shared/Correct.m4a"),
   Incorrect: require("../../assets/sounds/shared/Incorrect.m4a"),
   GameOver: require("../../assets/sounds/shared/GameOver.m4a"),
 };
 
-const QuizNumbers = ({ navigation }) => {
+const QuizLetters = ({ navigation }) => {
   const [sound, setSound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
@@ -29,29 +26,29 @@ const QuizNumbers = ({ navigation }) => {
   const [blocksDisplay, setBlocksDisplay] = useState("flex");
   const [overDisplay, setOverDisplay] = useState("none");
 
-  const numbersArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const lettersArray = ["A", "B", "C", "D", "E", "F", "G"];
   const arrangement = ["column", "column-reverse"];
-  const qNumber = numbersArray[increment];
-  const randomIndex = Math.floor(Math.random() * 10);
-  const getRandomNumber = numbersArray[randomIndex];
+  const qLetter = lettersArray[increment];
+  const randomIndex = Math.floor(Math.random() * 7);
+  const getRandomLetter = lettersArray[randomIndex];
 
-  const [wrongBox, setWrongBox] = useState(getRandomNumber);
+  const [wrongBox, setWrongBox] = useState(getRandomLetter);
   const dt = Date();
 
   useEffect(() => {
-    setWrongBox(getRandomNumber);
+    setWrongBox(getRandomLetter);
     setTimeout(() => {
-      question(qNumber);
+      question(qLetter);
     }, 1000);
   }, [increment]);
 
   //Checking for duplicate colors
   useEffect(() => {
-    if (wrongBox === qNumber) {
-      setWrongBox(numbersArray[increment + 1]);
+    if (wrongBox === qLetter) {
+      setWrongBox(lettersArray[increment + 1]);
     }
-    if (wrongBox === numbersArray[9]) {
-      setWrongBox(numbersArray[increment - 1]);
+    if (wrongBox === lettersArray[6]) {
+      setWrongBox(lettersArray[increment - 1]);
     }
   }, [wrongBox]);
 
@@ -62,14 +59,14 @@ const QuizNumbers = ({ navigation }) => {
   });
 
   //calls the question audio from first useEffect
-  async function question(number) {
-    const { sound } = await Audio.Sound.createAsync(audioFiles[number]);
+  async function question(letter) {
+    const { sound } = await Audio.Sound.createAsync(audioFiles[letter]);
     await sound.playAsync();
   }
 
   //If the user chooses the correct color
   async function correctAnswer() {
-    if (increment === numbersArray.length - 1) {
+    if (increment === lettersArray.length - 1) {
       gameOver();
     } else {
       const { sound } = await Audio.Sound.createAsync(audioFiles["Correct"]);
@@ -91,9 +88,9 @@ const QuizNumbers = ({ navigation }) => {
   //If the game is over
   async function gameOver() {
     axios.post("http:localhost:3000/newscore", {
-      game: "Numbers Quiz",
+      game: "Letters Quiz",
       dt: dt,
-      tries: correct + incorrect
+      tries: correct + incorrect,
     });
     const { sound } = await Audio.Sound.createAsync(audioFiles["GameOver"]);
     setSound(sound);
@@ -115,7 +112,7 @@ const QuizNumbers = ({ navigation }) => {
           onPress={correctAnswer}
         >
           <View style={styles.box}>
-              <Text style={styles.text}>{ qNumber }</Text>
+              <Text style={styles.text}>{ qLetter }</Text>
           </View>
         </TouchableOpacity>
 
@@ -132,7 +129,7 @@ const QuizNumbers = ({ navigation }) => {
       <GameOverComponent
         navigation={navigation}
         style={{ display: overDisplay }}
-        game={"Numbers Quiz"}
+        game={"Letters Quiz"}
         dt={dt}
         tries={correct + incorrect}
       />
@@ -174,4 +171,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuizNumbers;
+export default QuizLetters;
