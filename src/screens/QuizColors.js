@@ -5,7 +5,6 @@
 // - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished (look up onend)
 
 //EXTRA THINGS TO DO FIX UP
-// - Resisize images in PS on other computer
 // - play around with music on intro, menu, and "touch" screens. If workable record some custom music for the app
 // - create and save variables for colors and images in constant.js file
 // - refactor all code with new variables

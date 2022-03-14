@@ -31,7 +31,7 @@ const GameOverComponent = ({ navigation, dt, tries, game }) => {
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("Main")}>
           <Image
-            source={require("../../assets/images/Bus.png")}
+            source={require("../../assets/images/BusSmall.png")}
             style={{ height: 90, width: 130, marginTop: 25, marginBottom: 5 }}
           />
         </TouchableOpacity>

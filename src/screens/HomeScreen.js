@@ -11,7 +11,7 @@ const HomeScreen = ({navigation}) => {
       <Text ></Text>
       <TouchableOpacity onPress={() => navigation.navigate("Main")}>
         <Image
-          source={require("../../assets/images/Bus.png")}
+          source={require("../../assets/images/BusLarge.png")}
           style={styles.image}
         ></Image>
       </TouchableOpacity>
