@@ -33,7 +33,6 @@ const audioFiles = {
   GameOver: require("../../assets/sounds/shared/GameOver.m4a")
 };
 
-
 const QuizColors = ({ navigation }) => {
   const [sound, setSound] = useState();
   const [correct, setCorrect] = useState(0);
