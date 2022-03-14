@@ -19,7 +19,7 @@ const audioFiles = {
 
 const QuizLetters = ({ navigation }) => {
   const [sound, setSound] = useState();
-  const [correct, setCorrect] = useState(0);
+  const [correct, setCorrect] = useState(1);
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [order, setOrder] = useState();
@@ -30,7 +30,10 @@ const QuizLetters = ({ navigation }) => {
   const arrangement = ["column", "column-reverse"];
   const qLetter = lettersArray[increment];
   const randomIndex = Math.floor(Math.random() * 7);
+  console.log ("random index " + randomIndex)
   const getRandomLetter = lettersArray[randomIndex];
+  console.log(getRandomLetter)
+
 
   const [wrongBox, setWrongBox] = useState(getRandomLetter);
   const dt = Date();
@@ -45,10 +48,7 @@ const QuizLetters = ({ navigation }) => {
   //Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qLetter) {
-      setWrongBox(lettersArray[increment + 1]);
-    }
-    if (wrongBox === lettersArray[6]) {
-      setWrongBox(lettersArray[increment - 1]);
+      setWrongBox(lettersArray[increment+1]);
     }
   }, [wrongBox]);
 

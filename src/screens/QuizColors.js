@@ -1,5 +1,4 @@
 // = getting music to stop 
-// - decide on and finish mode design page
 // - Better font for Home page - curve?
 
 //- COME BACK TO if time
@@ -32,7 +31,7 @@ const audioFiles = {
 
 const QuizColors = ({ navigation }) => {
   const [sound, setSound] = useState();
-  const [correct, setCorrect] = useState(0);
+  const [correct, setCorrect] = useState(1);
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [order, setOrder] = useState();
@@ -42,8 +41,8 @@ const QuizColors = ({ navigation }) => {
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const arrangement = ["column", "column-reverse"];
   const qColor = colorsArray[increment];
-  const randomIndex = Math.floor(Math.random() * 6);
-  const getRandomColor = colorsArray[randomIndex];
+  const randomNumber = Math.floor(Math.random() * 6);
+  const getRandomColor = colorsArray[randomNumber];
 
   const [wrongBox, setWrongBox] = useState(getRandomColor);
   const dt = Date();
@@ -58,10 +57,7 @@ const QuizColors = ({ navigation }) => {
   //Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qColor) {
-      setWrongBox(colorsArray[increment + 1]);
-    }
-    if (wrongBox === colorsArray[5]) {
-      setWrongBox(colorsArray[increment - 1]);
+      setWrongBox("grey");
     }
   }, [wrongBox]);
 

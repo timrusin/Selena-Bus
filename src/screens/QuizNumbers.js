@@ -22,7 +22,7 @@ const audioFiles = {
 
 const QuizNumbers = ({ navigation }) => {
   const [sound, setSound] = useState();
-  const [correct, setCorrect] = useState(0);
+  const [correct, setCorrect] = useState(1);
   const [incorrect, setIncorrect] = useState(0);
   const [increment, setIncrement] = useState(0);
   const [order, setOrder] = useState();
@@ -48,10 +48,7 @@ const QuizNumbers = ({ navigation }) => {
   //Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qNumber) {
-      setWrongBox(numbersArray[increment + 1]);
-    }
-    if (wrongBox === numbersArray[9]) {
-      setWrongBox(numbersArray[increment - 1]);
+      setWrongBox(numbersArray[increment+1]);
     }
   }, [wrongBox]);
 
