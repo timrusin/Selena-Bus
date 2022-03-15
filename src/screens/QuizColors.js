@@ -1,10 +1,4 @@
-// = getting music to stop 
 
-//- COME BACK TO if time
-// - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished (look up onend)
-
-//EXTRA THINGS TO DO FIX UP
-// - play around with music on intro, menu, and "touch" screens. 
 // - create and save variables for colors and images in constant.js file
 // - refactor all code with new variables
 // - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'
@@ -45,25 +39,32 @@ const QuizColors = ({ navigation }) => {
   const [wrongBox, setWrongBox] = useState(getRandomColor);
   const dt = Date();
 
+  
   useEffect(() => {
     setWrongBox(getRandomColor);
+    console.log("wrong box first=" + wrongBox);
     setTimeout(() => {
       question(qColor);
     }, 1000);
   }, [increment]);
-
-  //Checking for duplicate colors
+  console.log("qColor = " + qColor);
+  console.log("wrongBox = " + wrongBox);  
+  
+  // Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qColor) {
-      setWrongBox("grey");
+      setWrongBox(colorsArray[increment + 1]);
     }
-  }, [wrongBox]);
+    if (wrongBox && qColor === "orange"){
+      setWrongBox("red")
+    }
+  },[correct]);
 
   //randomly arranging the boxes order
   useEffect(() => {
     const pick = Math.floor(Math.random() * 2);
     setOrder(arrangement[pick]);
-  });
+  }, [increment]);
 
   //calls the question audio from first useEffect
   async function question(color) {
