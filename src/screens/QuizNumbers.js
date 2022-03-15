@@ -50,7 +50,7 @@ const QuizNumbers = ({ navigation }) => {
     if (wrongBox === qNumber) {
       setWrongBox("0");
     }
-  }, [increment]);
+  }, [correct]);
 
   //randomly arranging the boxes order
   useEffect(() => {

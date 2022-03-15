@@ -48,7 +48,7 @@ const QuizLetters = ({ navigation }) => {
     if (wrongBox === qLetter) {
       setWrongBox("H");
     }
-  }, [wrongBox]);
+  }, [correct]);
 
   //randomly arranging the boxes order
   useEffect(() => {

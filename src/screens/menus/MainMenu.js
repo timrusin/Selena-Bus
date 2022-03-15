@@ -1,19 +1,25 @@
 import { React, useEffect, useState } from 'react';
 import { Audio } from "expo-av";
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { NavigationEvents, withNavigationFocus  } from 'react-navigation';
 
-const MainMenu = ({ navigation }) => {
+const MainMenu = ({ navigation, isFocused }) => {
+  const [myAudio, setMyAudio] =useState()
 
-  useEffect(() => {
-    Music();
-  },[]);
+  useEffect(async() => {
+    if (!isFocused) {
+      await myAudio.pauseAsync();
+      await myAudio.unloadAsync();
+      console.log("pause audio");
+    } else {
+      const { sound } = await Audio.Sound.createAsync(
+        require("../../../assets/sounds/music/MenuMusic.mp3")
+      );
+        setMyAudio(sound)
+      await sound.playAsync();
+    }
+  }, [isFocused]);
   
-  async function Music () {
-    const music = require("../../../assets/sounds/music/MenuMusic.mp3")
-    const { sound } = await Audio.Sound.createAsync(music); 
-    await sound.playAsync();
-  }
-
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
@@ -76,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainMenu;
+export default withNavigationFocus(MainMenu);

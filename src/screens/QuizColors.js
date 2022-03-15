@@ -1,8 +1,3 @@
-
-// - create and save variables for colors and images in constant.js file
-// - refactor all code with new variables
-// - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'
-
 import { useState, useEffect } from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { Audio } from "expo-av";
@@ -29,14 +24,13 @@ const QuizColors = ({ navigation }) => {
   const [order, setOrder] = useState();
   const [blocksDisplay, setBlocksDisplay] = useState("flex");
   const [overDisplay, setOverDisplay] = useState("none");
+  const [wrongBox, setWrongBox] = useState(getRandomColor);
 
   const colorsArray = ["red", "blue", "green", "purple", "yellow", "orange"];
   const arrangement = ["column", "column-reverse"];
   const qColor = colorsArray[increment];
   const randomNumber = Math.floor(Math.random() * 6);
   const getRandomColor = colorsArray[randomNumber];
-
-  const [wrongBox, setWrongBox] = useState(getRandomColor);
   const dt = Date();
 
   
@@ -54,9 +48,8 @@ const QuizColors = ({ navigation }) => {
   useEffect(() => {
     if (wrongBox === qColor) {
       setWrongBox(colorsArray[increment + 1]);
-    }
-    if (wrongBox && qColor === "orange"){
-      setWrongBox("red")
+    } else if (wrongBox && qColor === "orange"){
+      setWrongBox(colorsArray[increment - 2])
     }
   },[correct]);
 
