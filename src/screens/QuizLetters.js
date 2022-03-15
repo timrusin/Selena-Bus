@@ -4,6 +4,7 @@ import { Audio } from "expo-av";
 import axios from "axios";
 import GameOverComponent from "../components/GameOverComponent";
 
+
 const audioFiles = {
   A: require("../../assets/sounds/quiz_letter/QuizA.m4a"),
   B: require("../../assets/sounds/quiz_letter/QuizB.m4a"),
@@ -30,10 +31,7 @@ const QuizLetters = ({ navigation }) => {
   const arrangement = ["column", "column-reverse"];
   const qLetter = lettersArray[increment];
   const randomIndex = Math.floor(Math.random() * 7);
-  console.log ("random index " + randomIndex)
   const getRandomLetter = lettersArray[randomIndex];
-  console.log(getRandomLetter)
-
 
   const [wrongBox, setWrongBox] = useState(getRandomLetter);
   const dt = Date();
@@ -48,7 +46,7 @@ const QuizLetters = ({ navigation }) => {
   //Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qLetter) {
-      setWrongBox(lettersArray[increment+1]);
+      setWrongBox("H");
     }
   }, [wrongBox]);
 

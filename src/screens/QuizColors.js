@@ -1,11 +1,10 @@
 // = getting music to stop 
-// - Better font for Home page - curve?
 
 //- COME BACK TO if time
 // - stopping previous audio when clicking or not allowing clicking until previous aduio haas finished (look up onend)
 
 //EXTRA THINGS TO DO FIX UP
-// - play around with music on intro, menu, and "touch" screens. If workable record some custom music for the app
+// - play around with music on intro, menu, and "touch" screens. 
 // - create and save variables for colors and images in constant.js file
 // - refactor all code with new variables
 // - adjust dt to give 12 hour time readout and remove 'GMT-0500(CDT)'

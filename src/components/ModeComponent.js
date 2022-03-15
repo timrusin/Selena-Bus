@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ModeComponent = ({navigation, link, title, image}) => {
-
+  
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate(link)}>

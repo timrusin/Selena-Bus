@@ -2,7 +2,6 @@ import React from 'react';
 import ModeComponent from '../../components/ModeComponent';
 import { View } from 'react-native'
 
-
 const ColorsMenu = ({navigation}) => {
 const image1 = require('../../../assets/images/animatedGifs/colorsPractice.gif')
 const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')

@@ -2,8 +2,6 @@ import React from 'react';
 import ModeComponent from '../../components/ModeComponent';
 import { View } from 'react-native'
 
-
-
 const NumbersMenu = ({navigation}) => {
 const image1 = require('../../../assets/images/animatedGifs/numbersPractice.gif')
 const image2 = require('../../../assets/images/animatedGifs/numbersQuiz.gif')

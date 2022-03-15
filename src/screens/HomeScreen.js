@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { Audio } from "expo-av";
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     BusSounds();
   },[]);

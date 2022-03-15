@@ -48,7 +48,7 @@ const QuizNumbers = ({ navigation }) => {
   //Checking for duplicate colors
   useEffect(() => {
     if (wrongBox === qNumber) {
-      setWrongBox(numbersArray[increment+1]);
+      setWrongBox("0");
     }
   }, [wrongBox]);
 
