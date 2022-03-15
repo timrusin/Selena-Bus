@@ -77,7 +77,7 @@ const TouchColors = ({ navigation }) => {
           <View style={styles.box} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Colors")}>
           <Image
             source={require("../../assets/images/BusSmall.png")}
             style={{ height: 90, width: 130, marginTop: 10, marginBottom: 150, }}

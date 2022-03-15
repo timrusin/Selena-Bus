@@ -33,7 +33,7 @@ const QuizColors = ({ navigation }) => {
   const getRandomColor = colorsArray[randomNumber];
   const dt = Date();
 
-  
+  //starting the quiz
   useEffect(() => {
     setWrongBox(getRandomColor);
     console.log("wrong box first=" + wrongBox);

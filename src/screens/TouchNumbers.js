@@ -97,7 +97,7 @@ const TouchNumbers = ({ navigation }) => {
 
         <TouchableOpacity
           style={{ marginHorizontal: 57 }}
-          onPress={() => navigation.navigate("Main")}
+          onPress={() => navigation.navigate("Numbers")}
         >
           <Image
             source={require("../../assets/images/BusSmall.png")}

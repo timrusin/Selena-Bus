@@ -12,6 +12,7 @@ import QuizColors from "./src/screens/QuizColors";
 import QuizNumbers from "./src/screens/QuizNumbers";
 import QuizLetters from "./src/screens/QuizLetters";
 
+
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,

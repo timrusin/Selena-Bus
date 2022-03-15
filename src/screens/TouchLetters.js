@@ -62,7 +62,7 @@ const TouchLetters = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{ marginHorizontal: 57 }}
-          onPress={() => navigation.navigate("Main")}
+          onPress={() => navigation.navigate("Letters")}
         >
           <Image
             source={require("../../assets/images/BusSmall.png")}

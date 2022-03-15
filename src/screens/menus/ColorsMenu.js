@@ -1,11 +1,13 @@
 import React from 'react';
 import ModeComponent from '../../components/ModeComponent';
 import { View } from 'react-native'
+import {  withNavigationFocus  } from 'react-navigation';
 
-const ColorsMenu = ({navigation}) => {
-const image1 = require('../../../assets/images/animatedGifs/colorsPractice.gif')
-const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
-    return (
+const ColorsMenu = ({ navigation }) => {
+  const image1 = require('../../../assets/images/animatedGifs/colorsPractice.gif')
+  const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
+
+return (
       <View>
         <ModeComponent
           navigation={navigation}
@@ -24,4 +26,4 @@ const image2 = require('../../../assets/images/animatedGifs/colorsQuiz.gif')
 };
 
 
-export default ColorsMenu;
+export default withNavigationFocus(ColorsMenu);
