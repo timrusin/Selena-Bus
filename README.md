@@ -33,6 +33,8 @@ I look forward to continuing development with this app and building it out to gr
 ![Quiz Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png)
 ![Scores Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png)
 
+<img src = https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png width=20%>
+
 ## User Stories
 - As a user, I should be able to start the game from the home screen
 - As a user, I should be able to select what mode (colors, leters, numbers) I want to play from the main menu
