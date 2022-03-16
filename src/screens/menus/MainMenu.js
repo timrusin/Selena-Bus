@@ -10,7 +10,6 @@ const MainMenu = ({ navigation, isFocused }) => {
     if (!isFocused) {
       await myAudio.pauseAsync();
       await myAudio.unloadAsync();
-      console.log("pause audio");
     } else {
       const { sound } = await Audio.Sound.createAsync(
         require("../../../assets/sounds/music/MenuMusic.mp3")

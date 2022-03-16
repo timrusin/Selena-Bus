@@ -9,8 +9,8 @@ const HomeScreen = ({ navigation }) => {
   },[]);
   
   async function BusSounds () {
-    const music = require("../../assets/sounds/sfx/BusSounds.wav")
-    const { sound } = await Audio.Sound.createAsync(music); 
+    const Bus = require("../../assets/sounds/sfx/BusSounds.wav")
+    const { sound } = await Audio.Sound.createAsync(Bus); 
     await sound.playAsync();
   }
   return (
