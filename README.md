@@ -26,8 +26,17 @@ I look forward to continuing development with this app and building it out to gr
 ![Wireframe](https://github.com/timrusin/Selena-Bus/blob/main/Selena-Bus_wireframe.png)
 
 ## Screen Shots of game
-![Home Screen](https://github.com/timrusin/Selena-Bus/blob/main/Selena-Bus_wireframe.png)
+![Home Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png)
 
+![Main Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/MainMenuScreen.png)
+
+![Mode Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/SubMenuScreen.png)
+
+![Practice Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/NumbersTouchSCreen.png)
+
+![Quiz Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png)
+
+![Scores Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png)
 
 ## User Stories
 - As a user, I should be able to start the game from the home screen
