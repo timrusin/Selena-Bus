@@ -27,15 +27,10 @@ I look forward to continuing development with this app and building it out to gr
 
 ## Screen Shots of game
 ![Home Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png)
-
 ![Main Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/MainMenuScreen.png)
-
 ![Mode Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/SubMenuScreen.png)
-
 ![Practice Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/NumbersTouchSCreen.png)
-
 ![Quiz Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png)
-
 ![Scores Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png)
 
 ## User Stories
