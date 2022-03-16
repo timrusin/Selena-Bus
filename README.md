@@ -1,4 +1,5 @@
 # Selena-Bus
+## Created by Tim Rusin
 Educational interactive game for my daughter
 
 ## Summary:
@@ -13,7 +14,7 @@ Progress data is also tracked on the back-end and can be viewed and digested by 
 
 I can imagine adding more levels, content, and ideas in the future. The app is also very much in beta version with a few kinks that still need to be worked out.
 
-I look forward to continuing development with this app and building it out to grow along with Selena on her journey of learning. 
+I look forward to continuing development with this app and building it out to grow along with Selena on her journey of learning and even depolying it to the googel and apple app store when it's ready for production. 
 
 ## Technologies used:
 - React-Native
