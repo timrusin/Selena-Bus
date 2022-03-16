@@ -1,4 +1,4 @@
-# Selena-Bus
+# Selena's Bus
 ## Created by Tim Rusin
 Educational interactive game for my daughter
 
