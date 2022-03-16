@@ -26,14 +26,13 @@ I look forward to continuing development with this app and building it out to gr
 ![Wireframe](https://github.com/timrusin/Selena-Bus/blob/main/Selena-Bus_wireframe.png)
 
 ## Screen Shots of game
-![Home Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png)
-![Main Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/MainMenuScreen.png)
-![Mode Menu Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/SubMenuScreen.png)
-![Practice Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/NumbersTouchSCreen.png)
-![Quiz Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png)
-![Scores Screen](https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png)
+<img src = https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png alt="Home Screen" >
+<img src= https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/MainMenuScreen.png alt="Main Menu" width=30%)>
+<img src=https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/SubMenuScreen.png alt="Sub Menu" width=30%>
+<img src= https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/NumbersTouchSCreen.png alt="Practice Mode" width=30%>
+<img src=https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png alt="Quiz Mode" width=30%>
+<img src =https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png alt="Scores Screen" width=30%>
 
-<img src = https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png width=20%>
 
 ## User Stories
 - As a user, I should be able to start the game from the home screen
