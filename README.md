@@ -25,7 +25,7 @@ I look forward to continuing development with this app and building it out to gr
 ## Wireframes
 ![Wireframe](https://github.com/timrusin/Selena-Bus/blob/main/assets/Rusin_Capstone.png)
 
-## Screen Shots of game
+## Screen Shots of app
 <img src = https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/HomeScreen.png alt="Home Screen" width=30%>   <img src= https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/MainMenuScreen.png alt="Main Menu" width=30%)>   <img src=https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/SubMenuScreen.png alt="Sub Menu" width=30%>   <img src= https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/NumbersTouchSCreen.png alt="Practice Mode" width=30%>   <img src=https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/LettersQuiz.png alt="Quiz Mode" width=30%>   <img src =https://github.com/timrusin/Selena-Bus/blob/main/assets/images/forReadme/ScoresScreen.png alt="Scores Screen" width=30%>
 
 
